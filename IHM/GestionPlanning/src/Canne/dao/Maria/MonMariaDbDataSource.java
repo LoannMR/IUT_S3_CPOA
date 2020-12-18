@@ -10,14 +10,12 @@ import org.mariadb.jdbc.MariaDbDataSource;
 
 public class MonMariaDbDataSource extends MariaDbDataSource {
 	private static MonMariaDbDataSource mds;
-	/**
-	 * constructeur privé vide, utilisé dans getMdbDataSource(), c’est juste pour dire qu’il est privé
-	 */
+
 	private MonMariaDbDataSource() {}
-	/*** Méthode statique qui renvoie l'unique instance deMonMariaDbDataSourceconstruite à partir du fichier de proprietes* @return une instance de MariaDbDataSource:
-	 * @return */
+
+	
 	public static MonMariaDbDataSource getMdbDataSource() {
-		// contrôle si un datasource n'existe pas deja
+
 		if (mds == null) {
 			Properties prop = new Properties();
 			FileInputStream fichier = null;
@@ -49,9 +47,8 @@ public class MonMariaDbDataSource extends MariaDbDataSource {
 				e.printStackTrace();
 			}
 			
-			// pas de service à définirpour MariaDB
 		} 
 		else System.out.println("---(lasource de data existe deja)");
 		return mds;
-	} // de getMdbDataSource()
+	} 
 }
