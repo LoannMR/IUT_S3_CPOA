@@ -14,6 +14,6 @@ public interface ISalleDao {
 	
 	public void setConnection(Connection c);
 	
-	public List<Salle> listeDesFilm();
+	public List<Salle> listeDesSalles();
 	
 }

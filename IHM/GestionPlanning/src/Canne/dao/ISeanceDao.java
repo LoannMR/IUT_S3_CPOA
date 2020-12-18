@@ -5,14 +5,14 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import Canne.dao.modele.Planning;
+import Canne.dao.modele.Seance;
 
-public interface IPlanningDao {
+public interface ISeanceDao {
 
-	public void setDataSource(DataSource ds);
+public void setDataSource(DataSource ds);
 	
 	public void setConnection(Connection c);
 	
-	public List<Planning> listeDesPlannings();
+	public List<Seance> listeDesSeances();
 	
 }

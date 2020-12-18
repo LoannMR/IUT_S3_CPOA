@@ -81,11 +81,13 @@ public class Film {
     		
         
     }
+
+	@Override
+	public String toString() {
+		return "Film [id=" + id + ", nomFilm=" + nomFilm + ", idRealisateur=" + idRealisateur + ", duree=" + duree
+				+ ", categorie=" + categorie + "]";
+	}
     
-    //ToString
-    @Override
-    public String toString() {
-        return "OracleFilmDao{" + "id=" + id + ", nomFilm=" + nomFilm + ", idRealisateur=" + idRealisateur + ", duree=" + duree + ", categorie=" + categorie + '}';
-    }
+    
 	
 }

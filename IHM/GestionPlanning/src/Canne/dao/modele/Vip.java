@@ -90,11 +90,13 @@ public class Vip {
     public void setInfosupp(String infosupp) {
         this.infosupp = infosupp;
     }
+
+	@Override
+	public String toString() {
+		return "Vip [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", nationalite=" + nationalite + ", titre="
+				+ titre + ", importance=" + importance + ", photo=" + photo + ", infosupp=" + infosupp + "]";
+	}
     
-    //ToString
-    @Override
-    public String toString() {
-        return "OracleVipDao{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", nationalite=" + nationalite + ", titre=" + titre + ", importance=" + importance + ", photo=" + photo + ", infosupp=" + infosupp + '}';
-    }
+    
 	
 }
