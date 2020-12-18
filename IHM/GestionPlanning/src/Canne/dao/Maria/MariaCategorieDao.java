@@ -13,5 +13,6 @@ public enum MariaCategorieDao {
     LM,
     HC,
     UCR,
-    CM
+    CM,
+    PP
 }

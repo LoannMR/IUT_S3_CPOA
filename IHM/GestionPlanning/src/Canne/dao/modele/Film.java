@@ -74,6 +74,9 @@ public class Film {
     	case "HC":
     		this.categorie = MariaCategorieDao.HC;
     		break;
+    	case "PP":
+    		this.categorie = MariaCategorieDao.PP;
+    		break;
     	default:
     		this.categorie = MariaCategorieDao.HC;
     		break;

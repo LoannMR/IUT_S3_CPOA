@@ -63,6 +63,9 @@ public class Salle {
 	    	case "HC":
 	    		listCategorie.add(MariaCategorieDao.HC);
 	    		break;
+	    	case "PP":
+	    		listCategorie.add(MariaCategorieDao.PP);
+	    		break;
 	    	default:
 	    		listCategorie.add(MariaCategorieDao.HC);
 	    		break;
