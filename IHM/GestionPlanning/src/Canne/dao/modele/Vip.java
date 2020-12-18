@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Canne.dao.oracle;
+package Canne.dao.modele;
 
-/**
- *
- * @author loann
- */
-public class OracleVipDao {
-    
-    //ID
+public class Vip {
+
+	//ID
     private int id;
     //Informations de la classe
     private String nom;
@@ -21,8 +12,8 @@ public class OracleVipDao {
     private String importance;
     private String photo;
     private String infosupp;
-
-    public OracleVipDao(int id,String nom, String prenom, String nationalite, String titre, String importance, String photo, String infosupp) {
+	
+	public Vip(int id,String nom, String prenom, String nationalite, String titre, String importance, String photo, String infosupp) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -105,12 +96,5 @@ public class OracleVipDao {
     public String toString() {
         return "OracleVipDao{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", nationalite=" + nationalite + ", titre=" + titre + ", importance=" + importance + ", photo=" + photo + ", infosupp=" + infosupp + '}';
     }
-    
-    
-    
-    
-    
-    
-    
-    
+	
 }

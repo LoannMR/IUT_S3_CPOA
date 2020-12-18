@@ -1,5 +1,5 @@
 package Canne.dao.modele;
 
-public class temp {
+public class Planning {
 
 }

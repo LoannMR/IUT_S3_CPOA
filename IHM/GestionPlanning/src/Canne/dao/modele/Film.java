@@ -1,28 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Canne.dao.oracle;
+package Canne.dao.modele;
 
-/**
- *
- * @author loann
- */
-public class OracleFilmDao {
-    
-    private int id;
+import Canne.dao.Maria.MariaCategorieDao;
+
+public class Film {
+
+	private int id;
     private String nomFilm;
     private int idRealisateur;
     private int duree; // En minutes
-    private OracleCategorieDao categorie;
+    private MariaCategorieDao categorie;
 
-    public OracleFilmDao(int id, String nomFilm, int idRealisateur, int duree, OracleCategorieDao categorie) {
+    public Film(int id, String nomFilm, int idRealisateur, int duree, String categorie) {
         this.id = id;
         this.nomFilm = nomFilm;
         this.idRealisateur = idRealisateur;
         this.duree = duree;
-        this.categorie = categorie;
+        setCategorie(categorie);
     }
 
     //Getters
@@ -59,12 +52,34 @@ public class OracleFilmDao {
         this.duree = duree;
     }
 
-    public OracleCategorieDao getCategorie() {
+    public MariaCategorieDao getCategorie() {
         return categorie;
     }
     
-    public void setCategorie(OracleCategorieDao categorie) {
+    public void setCategorie(MariaCategorieDao categorie) {
         this.categorie = categorie;
+    }
+    
+    public void setCategorie(String categorie) {
+    	switch(categorie) {
+    	case "LM":
+    		this.categorie = MariaCategorieDao.LM;
+    		break;
+    	case "UCR":
+    		this.categorie = MariaCategorieDao.UCR;
+    		break;
+    	case "CM":
+    		this.categorie = MariaCategorieDao.CM;
+    		break;
+    	case "HC":
+    		this.categorie = MariaCategorieDao.HC;
+    		break;
+    	default:
+    		this.categorie = MariaCategorieDao.HC;
+    		break;
+    	}
+    		
+        
     }
     
     //ToString
@@ -72,12 +87,5 @@ public class OracleFilmDao {
     public String toString() {
         return "OracleFilmDao{" + "id=" + id + ", nomFilm=" + nomFilm + ", idRealisateur=" + idRealisateur + ", duree=" + duree + ", categorie=" + categorie + '}';
     }
-    
-    
-
-    
-    
-    
-    
-    
+	
 }

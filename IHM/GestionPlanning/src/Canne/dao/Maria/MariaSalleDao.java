@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Canne.dao.oracle;
+package Canne.dao.Maria;
 
 /**
  *
  * @author loann
  */
-public enum OracleCategorieDao {
-    LM,
-    HC,
-    UCM,
-    CM
+public class MariaSalleDao {
+
+	
+	
 }
