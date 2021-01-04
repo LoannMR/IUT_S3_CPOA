@@ -8,6 +8,11 @@ package Canne.vue.Fonctions;
 import Canne.dao.Maria.MariaFilmDao;
 import Canne.dao.Maria.MariaVipDao;
 import Canne.dao.modele.Film;
+import Canne.dao.modele.Vip;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
+import javax.sql.DataSource;
 
 /**
  *
@@ -15,19 +20,29 @@ import Canne.dao.modele.Film;
  */
 public class Fonctions {
 
-    /**
-     * @param args the command line arguments
-     */
+    static DataSource dataSourceDAO;
+    static Connection connexionBD;
+    static MariaFilmDao filmDao = new MariaFilmDao();;
+    static List<Film> listFilms;
+    
     public static void main(String[] args) {
         
     }
     
     
-    public void genererPlaning()
+    public void genererPlaning() throws SQLException
     {
-        //Liste de tous les types de films
+        //connexion a la BD
+        connexionBD = dataSourceDAO.getConnection();
+        
+        filmDao.setDataSource(dataSourceDAO);
+        filmDao.setConnection(connexionBD);
+        
+        //Récupération de tous les films dans la BD
+        listFilms = filmDao.listeDesFilms();
         
         //Long metrage
+        
         
         //Un certain regard
         
@@ -37,9 +52,10 @@ public class Fonctions {
     
     public void courtMetrage()
     {
-       MariaFilmDao filmDao;
-       filmDao = new MariaFilmDao();
        
+       for(Vip v : list) {
+				System.out.println(v);
+			}
         
     }
     

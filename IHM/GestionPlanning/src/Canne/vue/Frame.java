@@ -33,6 +33,7 @@ public class Frame {
 			for(Vip v : list) {
 				System.out.println(v);
 			}
+                        
 			
 		} catch (SQLException e) {
 			Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, e);
