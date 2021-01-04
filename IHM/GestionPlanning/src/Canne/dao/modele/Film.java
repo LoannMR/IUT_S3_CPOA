@@ -1,6 +1,6 @@
 package Canne.dao.modele;
 
-import Canne.dao.Maria.MariaCategorieDao;
+import Canne.dao.Maria.Categorie;
 
 public class Film {
 
@@ -8,7 +8,7 @@ public class Film {
     private String nomFilm;
     private int idRealisateur;
     private int duree; // En minutes
-    private MariaCategorieDao categorie;
+    private Categorie categorie;
 
     public Film(int id, String nomFilm, int idRealisateur, int duree, String categorie) {
         this.id = id;
@@ -52,33 +52,33 @@ public class Film {
         this.duree = duree;
     }
 
-    public MariaCategorieDao getCategorie() {
+    public Categorie getCategorie() {
         return categorie;
     }
     
-    public void setCategorie(MariaCategorieDao categorie) {
+    public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
     }
     
     public void setCategorie(String categorie) {
     	switch(categorie) {
     	case "LM":
-    		this.categorie = MariaCategorieDao.LM;
+    		this.categorie = Categorie.LM;
     		break;
     	case "UCR":
-    		this.categorie = MariaCategorieDao.UCR;
+    		this.categorie = Categorie.UCR;
     		break;
     	case "CM":
-    		this.categorie = MariaCategorieDao.CM;
+    		this.categorie = Categorie.CM;
     		break;
     	case "HC":
-    		this.categorie = MariaCategorieDao.HC;
+    		this.categorie = Categorie.HC;
     		break;
     	case "PP":
-    		this.categorie = MariaCategorieDao.PP;
+    		this.categorie = Categorie.PP;
     		break;
     	default:
-    		this.categorie = MariaCategorieDao.HC;
+    		this.categorie = Categorie.HC;
     		break;
     	}
     		

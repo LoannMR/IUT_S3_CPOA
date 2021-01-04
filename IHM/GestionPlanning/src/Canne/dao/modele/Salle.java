@@ -2,7 +2,7 @@ package Canne.dao.modele;
 
 import java.util.ArrayList;
 
-import Canne.dao.Maria.MariaCategorieDao;
+import Canne.dao.Maria.Categorie;
 
 public class Salle {
 
@@ -10,7 +10,7 @@ public class Salle {
     private String nomSalle;
     private int nbPlaces;
     private int idSalle;
-    private ArrayList<MariaCategorieDao> listCategorie = new ArrayList<>();
+    private ArrayList<Categorie> listCategorie = new ArrayList<>();
     
     public Salle(int idSalle, int nbPlaces, String nomSalle, String categorie) {
 		this.idSalle = idSalle;
@@ -42,7 +42,7 @@ public class Salle {
 		this.idSalle = idSalle;
 	}
     
-	public ArrayList<MariaCategorieDao> getListCategorie(){
+	public ArrayList<Categorie> getListCategorie(){
 		return listCategorie;
 	}
 	
@@ -52,22 +52,22 @@ public class Salle {
 		for(String c : ls) {
 			switch(c) {
 	    	case "LM":
-	    		listCategorie.add(MariaCategorieDao.LM);
+	    		listCategorie.add(Categorie.LM);
 	    		break;
 	    	case "UCR":
-	    		listCategorie.add(MariaCategorieDao.UCR);
+	    		listCategorie.add(Categorie.UCR);
 	    		break;
 	    	case "CM":
-	    		listCategorie.add(MariaCategorieDao.CM);
+	    		listCategorie.add(Categorie.CM);
 	    		break;
 	    	case "HC":
-	    		listCategorie.add(MariaCategorieDao.HC);
+	    		listCategorie.add(Categorie.HC);
 	    		break;
 	    	case "PP":
-	    		listCategorie.add(MariaCategorieDao.PP);
+	    		listCategorie.add(Categorie.PP);
 	    		break;
 	    	default:
-	    		listCategorie.add(MariaCategorieDao.HC);
+	    		listCategorie.add(Categorie.HC);
 	    		break;
 	    	}
 		}

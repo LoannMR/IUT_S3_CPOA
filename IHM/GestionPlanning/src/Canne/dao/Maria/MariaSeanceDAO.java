@@ -65,5 +65,40 @@ public class MariaSeanceDAO implements ISeanceDao{
 		}
 		return listeSceance;
 	}
+	
+	public boolean insertSeance(Seance s) {
+		int value = 0;
+		Statement stmt = null;
+		
+		try {
+			stmt= c.createStatement();
+			value = stmt.executeUpdate("INSERT INTO Film VALUES (" + s.getIdSeance() + "," + s.getIdPlanning() + "," + s.getIdFilm() + "," + s.getIdSalle() + ",'" + s.getJour() + "', '" + s.getHoraire() + "')");
+		}
+		catch (SQLException exc) {
+			exc.printStackTrace();
+		}
+		finally {
+			try {
+				if (stmt != null) stmt.close();
+			}
+			catch (SQLException ex) {
+				ex.printStackTrace();	
+			}
+		}
+		if(value > 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public void insertSeance(List<Seance> list) {
+		for(Seance s : list) {
+			if(!insertSeance(s)) {
+				System.out.println("la seance " + s + "n'a pas été inseré");
+			}
+		}
+	}
 
 }

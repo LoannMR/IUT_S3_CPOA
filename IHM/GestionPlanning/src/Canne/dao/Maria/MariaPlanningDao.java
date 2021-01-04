@@ -60,6 +60,33 @@ public class MariaPlanningDao implements IPlanningDao {
 		}
 		return listePlanning;
 	}
+	
+	public boolean insertPlanning(Planning p) {
+		int value = 0;
+		Statement stmt = null;
+		
+		try {
+			stmt= c.createStatement();
+			value = stmt.executeUpdate("INSERT INTO Planning VALUES (" + p.getId() + "," + p.getNom() + ")");
+		}
+		catch (SQLException exc) {
+			exc.printStackTrace();
+		}
+		finally {
+			try {
+				if (stmt != null) stmt.close();
+			}
+			catch (SQLException ex) {
+				ex.printStackTrace();	
+			}
+		}
+		if(value > 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
     
 	
 	

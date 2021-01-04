@@ -104,7 +104,7 @@ public class MariaFilmDao implements IFilmDao{
 	
 	}
     
-    private int categorieToString(MariaCategorieDao cat) {
+    private int categorieToString(Categorie cat) {
     	switch(cat) {
     	case LM:
     		return 1;
