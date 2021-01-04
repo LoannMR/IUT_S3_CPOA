@@ -31,7 +31,7 @@ public class MariaFilmDao implements IFilmDao{
 	}
 
 	@Override
-	public List<Film> listeDesFilm() {
+	public List<Film> listeDesFilms() {
 		ResultSet rset=null;
 		Statement stmt=null;
 		List<Film> listeFilm = null;

@@ -53,9 +53,9 @@ public class Fonctions {
     public void courtMetrage()
     {
        
-       for(Vip v : list) {
+       /*for(Vip v : list) {
 				System.out.println(v);
-			}
+			}*/
         
     }
     

@@ -14,6 +14,6 @@ public interface IFilmDao {
 	
 	public void setConnection(Connection c);
 	
-	public List<Film> listeDesFilm();
+	public List<Film> listeDesFilms();
 	
 }
