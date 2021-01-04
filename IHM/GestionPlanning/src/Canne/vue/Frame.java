@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
-import Canne.dao.Maria.MariaCategorieDao;
 import Canne.dao.Maria.MariaFilmDao;
 import Canne.dao.Maria.MariaVipDao;
 import Canne.dao.Maria.MonMariaDbDataSource;

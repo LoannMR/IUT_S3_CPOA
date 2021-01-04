@@ -15,7 +15,7 @@ import Canne.dao.modele.Film;
 public class MariaFilmDao implements IFilmDao{
 
 	DataSource ds;
-    static Connection c;
+    Connection c;
     List<Film> listeFilm = new ArrayList<>();
 
     @Override
@@ -68,7 +68,7 @@ public class MariaFilmDao implements IFilmDao{
 		return listeFilm;
 	}
 	
-	public static boolean insertFilm(Film f) {
+	public boolean insertFilm(Film f) {
 		int value = 0;
 		Statement stmt = null;
 		
@@ -95,16 +95,16 @@ public class MariaFilmDao implements IFilmDao{
 		}
 	}
 	
-	public static void insertFilm(List<Film> listF) {
+	public void insertFilm(List<Film> listF) {
 		for(Film f : listF) {
 			if(!insertFilm(f)) {
-				System.out.println("le film " + f + "n'a pas été inseré");
+				System.out.println("le film " + f + "n'a pas Ã©tÃ© inserÃ©");
 			}
 		}
 	
 	}
     
-    private static int categorieToString(MariaCategorieDao cat) {
+    private int categorieToString(MariaCategorieDao cat) {
     	switch(cat) {
     	case LM:
     		return 1;
