@@ -23,7 +23,7 @@ public class MonMariaDbDataSource extends MariaDbDataSource {
 				fichier = new FileInputStream(".\\src\\Canne\\dao\\Maria\\connexion.properties");
 			} 
 			catch (FileNotFoundException ex1) {
-				System.out.println("Fichier de proprietes non trouve");
+				System.out.println("Fichier de proprietes non trouvé");
 			}
 			try {prop.load(fichier);} catch (IOException ex) {
 				System.out.println("Erreur lors du chargement du fichier de proprietes mySQL");
@@ -33,7 +33,7 @@ public class MonMariaDbDataSource extends MariaDbDataSource {
 					fichier.close();
 				} 
 				catch (IOException ex) {
-					System.out.print("Probleme d'entree/sortie" + ex.getMessage());
+					System.out.print("Problème d'entree/sortie" + ex.getMessage());
 				}
 			}
 			mds = new MonMariaDbDataSource();
