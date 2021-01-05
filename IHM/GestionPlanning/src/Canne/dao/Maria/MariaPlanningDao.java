@@ -67,7 +67,8 @@ public class MariaPlanningDao implements IPlanningDao {
 		
 		try {
 			stmt= c.createStatement();
-			value = stmt.executeUpdate("INSERT INTO Planning VALUES (" + p.getId() + "," + p.getNom() + ")");
+			String sql = "INSERT INTO Planning VALUES (" + p.getId() + ",'" + p.getNom() + "')";
+			value = stmt.executeUpdate(sql);
 		}
 		catch (SQLException exc) {
 			exc.printStackTrace();
@@ -88,6 +89,32 @@ public class MariaPlanningDao implements IPlanningDao {
 		}
 	}
     
+	public boolean deletePlanning(Planning p) {
+		int value = 0;
+		Statement stmt = null;
+		
+		try {
+			stmt= c.createStatement();
+			value = stmt.executeUpdate("DELETE INTO Planning where idPlanning=" + p.getId());
+		}
+		catch (SQLException exc) {
+			exc.printStackTrace();
+		}
+		finally {
+			try {
+				if (stmt != null) stmt.close();
+			}
+			catch (SQLException ex) {
+				ex.printStackTrace();	
+			}
+		}
+		if(value > 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	
 	
 }

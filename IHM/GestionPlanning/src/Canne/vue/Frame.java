@@ -1,55 +1,89 @@
 package Canne.vue;
 
+import java.awt.Toolkit;
 import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.sql.DataSource;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 
-import Canne.dao.Maria.MariaFilmDao;
-import Canne.dao.Maria.MariaVipDao;
-import Canne.dao.Maria.MonMariaDbDataSource;
-import Canne.dao.modele.Film;
-import Canne.dao.modele.Vip;
 
-public class Frame {
+@SuppressWarnings("serial")
+public class Frame extends JFrame {
 
-	static DataSource dataSourceDAO;
-	static Connection connexionBD;
-	static MariaVipDao vipDao;
-	static MariaFilmDao filmDao;
+	DataSource dataSourceDAO;
+	Connection connexionBD;
 	
-	public static void main(String[] args) {
+	private JMenu jMenuAcceuil;
+    private JMenu jMenuPlanning;
+    private JMenu jMenuEdit;
+    private JMenu jMenuView;
+    private JMenu jMenuWindows;
+    private JMenu jMenuHelp;
+    private JMenuBar jMenuBar;
+	
+	public Frame(DataSource ds, Connection c) {
+		dataSourceDAO = ds;
+		connexionBD = c;
+		setTitle("Gestion Projection des films du festival de Canne");
+		setSize((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 100, (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100);
+		getContentPane().setLayout(null);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		initComponent();
+		setAccueil();
+	}
+	
+	private void initComponent() {
+		jMenuBar = new JMenuBar();
 		
-		try {
-			dataSourceDAO = MonMariaDbDataSource.getMdbDataSource();
-			vipDao = new MariaVipDao();
-			vipDao.setDataSource(dataSourceDAO);
-			
-			
-			connexionBD = dataSourceDAO.getConnection();
-			vipDao.setConnection(connexionBD);
-			
-			List<Vip> list = vipDao.listeDesVip();
-			for(Vip v : list) {
-				System.out.println(v);
-			}
-			
-			filmDao = new MariaFilmDao();
-			filmDao.setDataSource(dataSourceDAO);
-			filmDao.setConnection(connexionBD);
-			
-			List<Film> listFilm = filmDao.listeDesFilms();
-			for(Film f : listFilm) {
-				System.out.println(f);
-			}
-			
-		} catch (SQLException e) {
-			Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, e);
-		}
-		
+		jMenuAcceuil = new JMenu();
+		jMenuAcceuil.setText("Accueil");
+		jMenuBar.add(jMenuAcceuil);
+
+		jMenuPlanning = new JMenu();
+		jMenuPlanning.setText("Planning");
+        jMenuBar.add(jMenuPlanning);
+
+        jMenuEdit = new JMenu();
+        jMenuEdit.setText("Edit");
+        jMenuBar.add(jMenuEdit);
+
+        jMenuView = new JMenu();
+        jMenuView.setText("View");
+        jMenuBar.add(jMenuView);
+
+        jMenuWindows = new JMenu();
+        jMenuWindows.setText("Window");
+        jMenuBar.add(jMenuWindows);
+
+        jMenuHelp = new JMenu();
+        jMenuHelp.setText("Help");
+        jMenuBar.add(jMenuHelp);
+
+        setJMenuBar(jMenuBar);
+	}
+
+
+
+	public DataSource getDataSourceDAO() {
+		return dataSourceDAO;
+	}
+
+	public Connection getConnexionBD() {
+		return connexionBD;
+	}
+	
+	public void setAccueil() {
+		getContentPane().removeAll();
+		repaint();
+		getContentPane().add(new FrameAccueil(this));
+	}
+	
+	public void setPlanning(int idPlanning) {
+		getContentPane().removeAll();
+		repaint();
+		System.out.println(idPlanning);
 	}
 	
 }

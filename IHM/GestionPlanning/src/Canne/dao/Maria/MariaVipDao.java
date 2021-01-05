@@ -67,7 +67,41 @@ public class MariaVipDao implements IVipDao {
 		return listeVip;
 	}
     
-    
+    public Vip getVip(int id) {
+    	ResultSet rset=null;
+		Statement stmt=null;
+		Vip vip = null;
+		try {
+			stmt= c.createStatement();
+			listeVip = new ArrayList<>();
+			rset = stmt.executeQuery("SELECT * from VIP where IDVIP="+id);
+			while (rset.next()) {
+				int idvip = rset.getInt("IDVIP");
+				String nom = rset.getString("nom");
+				String prenom = rset.getString("prenom");
+				String nationalite = rset.getString("nationnalite");
+				String titre = rset.getString("titre");
+				String importance = rset.getString("importance");
+				String photo = rset.getString("photo");
+				String infosupp = rset.getString("infosupp");
+				
+				vip = new Vip(idvip, nom, prenom, nationalite, titre, importance, photo, infosupp);
+				listeVip.add(vip);
+			}
+		}
+		catch (SQLException exc) {
+		exc.printStackTrace();
+		} finally {
+			try {
+			
+			if (stmt != null) stmt.close();
+			if (rset != null) rset.close();
+			} catch (SQLException ex) {
+				
+			}
+		}
+		return vip;
+    }
     
 
 	
