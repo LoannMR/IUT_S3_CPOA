@@ -64,13 +64,13 @@ public class MariaSalleDao implements ISalleDao{
 	}
 
 	
-	public Salle getMaxPlace(String nomCategorie) {
+	public Salle getPlaceOrdered(String nomCategorie) {
 		ResultSet rset=null;
 		Statement stmt=null;
 		Salle salle = null;
 		try {
 			stmt= c.createStatement();
-			rset = stmt.executeQuery("SELECT * from Salle where nbPlace=(select MAX(nbPlace) from Salle where categorie='"+nomCategorie+"')");
+			rset = stmt.executeQuery("SELECT * from Salle where Order by nbPlace desc");
 			while (rset.next()) {
 				int id = rset.getInt("idSalle");
 				String nomSalle = rset.getString("nomSalle");
