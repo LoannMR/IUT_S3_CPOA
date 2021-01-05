@@ -68,6 +68,42 @@ public class MariaFilmDao implements IFilmDao{
 		return listeFilm;
 	}
 	
+	public Film getFilm(int idFilm) {
+		ResultSet rset=null;
+		Statement stmt=null;
+		Film f = null;
+		try {
+			stmt= c.createStatement();
+			listeFilm = new ArrayList<>();
+			rset = stmt.executeQuery("SELECT * from Film where idFilm="+idFilm);
+			
+			while (rset.next()) {
+				int id = rset.getInt("idFilm");
+				int idRealisateur = rset.getInt("idRealisateur");
+				String nomfilm = rset.getString("nomFilm");
+				int duree = rset.getInt("duree");
+				int intCat = rset.getInt("categorie");
+				ResultSet result = stmt.executeQuery("SELECT * from Categorie where idCat = " + intCat);
+				result.next();
+				String categorie = result.getString("nomCat");
+				
+				f = new Film(id, nomfilm, idRealisateur, duree, categorie);
+			}
+		}
+		catch (SQLException exc) {
+		exc.printStackTrace();
+		} finally {
+			try {
+			
+			if (stmt != null) stmt.close();
+			if (rset != null) rset.close();
+			} catch (SQLException ex) {
+				
+			}
+		}
+		return f;
+	}
+	
 	public boolean insertFilm(Film f) {
 		int value = 0;
 		Statement stmt = null;

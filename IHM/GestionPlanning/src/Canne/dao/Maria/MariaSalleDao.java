@@ -64,5 +64,35 @@ public class MariaSalleDao implements ISalleDao{
 	}
 
 	
+	public Salle getMaxPlace(String nomCategorie) {
+		ResultSet rset=null;
+		Statement stmt=null;
+		Salle salle = null;
+		try {
+			stmt= c.createStatement();
+			rset = stmt.executeQuery("SELECT * from Salle where nbPlace=(select MAX(nbPlace) from Salle where categorie='"+nomCategorie+"')");
+			while (rset.next()) {
+				int id = rset.getInt("idSalle");
+				String nomSalle = rset.getString("nomSalle");
+				int nbPlaces = rset.getInt("nbPlace");
+				String categorie = rset.getString("categorie");
+				
+				salle = new Salle(id, nbPlaces, nomSalle, categorie);
+			}
+		}
+		catch (SQLException exc) {
+		exc.printStackTrace();
+		} finally {
+			try {
+			
+			if (stmt != null) stmt.close();
+			if (rset != null) rset.close();
+			} catch (SQLException ex) {
+				
+			}
+		}
+		return salle;
+	}
+	
 	
 }
