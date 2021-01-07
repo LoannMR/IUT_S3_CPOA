@@ -16,6 +16,7 @@ public class Salle {
 		this.idSalle = idSalle;
 		this.nbPlaces = nbPlaces;
 		this.nomSalle = nomSalle;
+		setListCategorie(categorie);
 	}
 
 	public String getNomSalle() {
@@ -47,7 +48,7 @@ public class Salle {
 	}
 	
 	public void setListCategorie(String categorie) {
-		String[] ls = categorie.split(" ");
+		String[] ls = categorie.split("|");
 		listCategorie.clear();
 		for(String c : ls) {
 			switch(c) {

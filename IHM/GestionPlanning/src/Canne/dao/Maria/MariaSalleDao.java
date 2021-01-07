@@ -64,7 +64,7 @@ public class MariaSalleDao implements ISalleDao{
 	}
 
 	
-	public Salle getPlaceOrdered(String nomCategorie) {
+	public Salle getPlaceOrdered() {
 		ResultSet rset=null;
 		Statement stmt=null;
 		Salle salle = null;

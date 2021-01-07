@@ -76,14 +76,14 @@ public class Frame extends JFrame {
 	
 	public void setAccueil() {
 		getContentPane().removeAll();
-		repaint();
 		getContentPane().add(new FrameAccueil(this));
+		repaint();
 	}
 	
 	public void setPlanning(int idPlanning) {
 		getContentPane().removeAll();
+		getContentPane().add(new FramePlanning(this, idPlanning));
 		repaint();
-		System.out.println(idPlanning);
 	}
 	
 }
