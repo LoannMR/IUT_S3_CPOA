@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Canne.dao.Maria.MariaPlanningDao;
+import Canne.dao.modele.Planning;
 
 @SuppressWarnings("serial")
 public class FrameAccueil extends JPanel{
@@ -80,12 +81,12 @@ public class FrameAccueil extends JPanel{
 
 	private void jButtonOuvrirActionPerformed(ActionEvent evt) {
 		JComboBox<String> planning = new JComboBox<String>(); 
-		for(Canne.dao.modele.Planning p : listPlanning) {
+		for(Planning p : listPlanning) {
 			planning.addItem(p.getNom());
 		}
 		int retour = JOptionPane.showConfirmDialog(null, planning, "Choix du planning", JOptionPane.DEFAULT_OPTION);
 		if(retour == 0) {
-			Canne.dao.modele.Planning p = null;
+			Planning p = null;
 			int i = 0;
 			while(p==null && i<listPlanning.size()) {
 				if(listPlanning.get(i).getNom().equalsIgnoreCase((String) planning.getSelectedItem())) {
@@ -102,7 +103,6 @@ public class FrameAccueil extends JPanel{
 	private void jButtonNouveauActionPerformed(ActionEvent evt) {
 		JTextField nom = new JTextField();
 		int retour = JOptionPane.showConfirmDialog(null, nom, "Saisir le nom du planning", JOptionPane.DEFAULT_OPTION);
-		System.out.println(retour);
 		if(retour == 0) {
 			int nb = -1, index = 0;
 			while(nb<0) {
@@ -120,7 +120,7 @@ public class FrameAccueil extends JPanel{
 				if(!present) nb = index;
 		
 			}
-			Canne.dao.modele.Planning p = new Canne.dao.modele.Planning(nb, nom.getText());
+			Planning p = new Planning(nb, nom.getText());
 			planningDao.insertPlanning(p);
 			f.setPlanning(nb);
 		}
@@ -128,7 +128,7 @@ public class FrameAccueil extends JPanel{
 	}
 	
 	
-	private List<Canne.dao.modele.Planning> listPlanning;
+	private List<Planning> listPlanning;
 	private void getPlanning() {
 		planningDao = new MariaPlanningDao();
 		planningDao.setDataSource(f.getDataSourceDAO());

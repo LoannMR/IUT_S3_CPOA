@@ -10,6 +10,7 @@ public class Seance {
 	private int idSalle;
 	private String jour;
 	private String horaire;
+	private static int id = 0;
 	
 	public Seance(int idSenace, int idPlanning, int idFilm, int idSalle, String jour, String horaire) {
 		this.idSeance = idSenace;
@@ -18,6 +19,14 @@ public class Seance {
 		this.idSalle = idSalle;
 		this.jour = jour;
 		this.horaire = horaire;
+		
+		if(idSeance >= 0 && id <= idSeance) {
+			id = idSeance + 1;
+		}
+		if(idSeance == -1) {
+			this.idSeance = id;
+			id++;
+		}
 	}
 
 	public int getIdSeance() {
@@ -74,5 +83,8 @@ public class Seance {
 				+ idSalle + ", jour=" + jour + ", horaire=" + horaire + "]";
 	}
 	
+	public static void setId(int id) {
+		Seance.id = id + 1;
+	}
 	
 }

@@ -12,11 +12,10 @@ import javax.sql.DataSource;
 import Canne.dao.ISeanceDao;
 import Canne.dao.modele.Seance;
 
-public class MariaSeanceDAO implements ISeanceDao{
+public class MariaSeanceDao implements ISeanceDao{
 
 	DataSource ds;
     Connection c;
-    List<Seance> listeSceance = new ArrayList<>();
 
     @Override
 	public void setDataSource(DataSource ds) {
@@ -63,7 +62,7 @@ public class MariaSeanceDAO implements ISeanceDao{
 				
 			}
 		}
-		return listeSceance;
+		return listeSeance;
 	}
 	
 	public List<Seance> listSeancePlanning(int id){
@@ -98,7 +97,7 @@ public class MariaSeanceDAO implements ISeanceDao{
 				
 			}
 		}
-		return listeSceance;
+		return listeSeance;
 	}
 	
 	public boolean insertSeance(Seance s) {
@@ -128,6 +127,31 @@ public class MariaSeanceDAO implements ISeanceDao{
 		}
 	}
 	
+	public int maxId(){
+		ResultSet rset=null;
+		Statement stmt=null;
+		int idSeance = 0;
+		try {
+			stmt= c.createStatement();
+			rset = stmt.executeQuery("SELECT max(idSeance) maxId from Seance");
+			while (rset.next()) {
+				idSeance = rset.getInt("maxId");
+			}
+		}
+		catch (SQLException exc) {
+		exc.printStackTrace();
+		} finally {
+			try {
+			
+				if (stmt != null) stmt.close();
+				if (rset != null) rset.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return idSeance;
+	}
+	
 	public void insertSeance(List<Seance> list) {
 		for(Seance s : list) {
 			if(!insertSeance(s)) {
@@ -142,7 +166,7 @@ public class MariaSeanceDAO implements ISeanceDao{
 		
 		try {
 			stmt= c.createStatement();
-			value = stmt.executeUpdate("DELETE INTO Seance where idSenace=" + s.getIdSeance());
+			value = stmt.executeUpdate("DELETE FROM Seance where idSeance=" + s.getIdSeance());
 		}
 		catch (SQLException exc) {
 			exc.printStackTrace();
