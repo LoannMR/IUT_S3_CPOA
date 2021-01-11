@@ -64,6 +64,9 @@ public class Salle {
 	    	case "HC":
 	    		listCategorie.add(Categorie.HC);
 	    		break;
+	    	case "SL":
+	    		listCategorie.add(Categorie.SL);
+	    		break;
 	    	case "PP":
 	    		listCategorie.add(Categorie.PP);
 	    		break;

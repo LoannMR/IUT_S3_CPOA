@@ -7,5 +7,6 @@ public enum Categorie {
     HC,
     UCR,
     CM,
+    SL,
     PP
 }

@@ -1,6 +1,7 @@
 package Canne.vue;
 
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -29,7 +30,7 @@ public class GrillePlanning extends JPanel {
 		
 		this.f = f;
 		
-		setSize(700, 31*100+50);
+		setSize((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 100, 3150);
 		setLayout(null);
 		
 		repaint();
@@ -46,9 +47,9 @@ public class GrillePlanning extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.clearRect(0, 0, 700, 31*100+50);
+		g.clearRect(0, 0, (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 100, 31*100+50);
 		for(int i=0;i<31;i++) {
-			g.drawLine(150, 50+i*100, 650, 50+i*100);
+			g.drawLine(150, 50+i*100, (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 150, 50+i*100);
 		}
 		if(labelHeure.size() == 0) {
 			setLabelHoraire();
