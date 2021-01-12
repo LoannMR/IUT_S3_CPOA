@@ -1,32 +1,20 @@
-<form action="" method="post">
-  <input id="POST-name" type="text" name="name" placeholder="Nom">
-</form>
+<form action="index.php?page=check_formulaire" method="post">
 
-<form action="" method="post">
-  <input id="POST-name" type="text" name="name" placeholder="Prénom">
-</form>
+  <input type="text" name="nom" placeholder="Nom">
+  <input type="text" name="prenom" placeholder="Prénom">
+  <input type="text" name="nb_personne" placeholder="Nombre de personne">
+  <input type="text" name="nb_chambre" placeholder="Nombre de chambre">
 
-<form action="" method="post">
-  <input id="POST-name" type="text" name="name" placeholder="Nombre de personne">
-</form>
+<label>Type :</label>
 
-<label for="Type">Type :</label>
-
-<select name="Type" id="Type">
+<select name="Type">
     <option value="">--selectionnez une catégorie--</option>
-    <option value="dog">Jury</option>
-    <option value="dog">VIP</option>
+    <option value="jury">Jury</option>
+    <option value="vip">VIP</option>
   </select>
 
-<form action="" method="post">
-  <label for="POST-name">Date séjour</label>
-  <input id="POST-name" type="text" name="name">
-</form>
-
-<form action="" method="post">
-  <label for="POST-name">Durée</label>
-  <input id="POST-name" type="text" name="name">
-</form>
+  <input type="text" name="d_arr" placeholder="Date d'arrivée (jj/mm/aaaa)">
+  <input type="text" name="d_dep" placeholder="Date de départ (jj/mm/aaaa)">
 
 <fieldset>
     <legend>Caractéristique</legend>

@@ -1,15 +1,9 @@
 <form action="index.php?page=check_formulaire" method="post">
-  <label for="POST-name">Nom :</label>
-  <input type="text" name="nom">
-
-  <label for="POST-name">Nombre de personnes</label>
-  <input type="text" name="nb_personne">
-
-  <label for="POST-name">nombre de chambre</label>
-  <input type="text" name="nb_chambre">
-
-  <label for="POST-name">Adresse</label>
-  <input type="text" name="adresse">
+  
+  <input type="text" name="nom" placeholder="Nom de l'hôtel">
+  <input type="text" name="nb_personne" placeholder="Nombre de personne">
+  <input type="text" name="nb_chambre" placeholder="Nombre de chambre">
+  <input type="text" name="adresse" placeholder="Adresse de l'hôtel">
 
   <fieldset>
     <legend>Caractéristique</legend>

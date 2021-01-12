@@ -5,14 +5,7 @@ $nb_personne = $_POST['nb_personne'];
 $nb_chambre = $_POST['nb_chambre'];
 $adresse = $_POST['adresse'];
 
-/*
-echo $_POST['Plage'];
-echo $_POST['Luxe'];
-echo $_POST['Montagne'];
-echo $_POST['Restaurant'];
-echo $_POST['Piscine'];
-echo $_POST['Sport'];
-*/
+
 
 $formulaire = array (
     'Nom' => $nom,
@@ -20,6 +13,7 @@ $formulaire = array (
     'Nombre de chambre' => $nb_chambre,
     'Adresse' => $adresse,
 );
+
 ?>
 <p><?=$formulaire['Nom']?></p>
 <p><?=$formulaire['Nombre de personnes']?></p>
