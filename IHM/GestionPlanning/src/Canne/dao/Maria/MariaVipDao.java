@@ -9,28 +9,24 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import Canne.dao.IVipDao;
 import Canne.dao.modele.Vip;
 
-public class MariaVipDao implements IVipDao {
+public class MariaVipDao {
     
     DataSource ds;
     Connection c;
     List<Vip> listeVip = new ArrayList<>();
 
-    @Override
 	public void setDataSource(DataSource ds) {
 		this.ds = ds;
 		
 	}
 
-	@Override
 	public void setConnection(Connection c) {
 		this.c = c;
 		
 	}
 
-	@Override
 	public List<Vip> listeDesVip() {
 		ResultSet rset=null;
 		Statement stmt=null;

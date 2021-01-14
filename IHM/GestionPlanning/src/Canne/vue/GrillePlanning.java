@@ -101,6 +101,7 @@ public class GrillePlanning extends JPanel implements ActionListener {
 		
 		Film f = filmDao.getFilm(s.getIdFilm());
 		int duree = f.getDuree();
+		listSeance.add(s);
 		
 		String horaire = s.getHoraire();
 		int horaireDebut = Integer.parseInt(horaire.substring(0, 2))*60 + Integer.parseInt(horaire.substring(3));
@@ -115,12 +116,21 @@ public class GrillePlanning extends JPanel implements ActionListener {
 		add(seance);
 	}
 	
+	public void removeSeance(Seance s) {
+		listSeance.remove(s);
+	}
+	
 	public void clearSeance() {
 		listSeance.clear();
 		removeAll();
 		setLabelHoraire();
 	}
 
+	public ArrayList<Seance> getListSeance() {
+		return listSeance;
+	}
+
+	
 	public int getIdSalle() {
 		return idSalle;
 	}
@@ -164,6 +174,7 @@ public class GrillePlanning extends JPanel implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				seanceDao.deleteSeance(sb.getSeance());
 				dialog.dispose();
+				removeSeance(sb.getSeance());
 				remove(sb);
 				repaint();
 			}

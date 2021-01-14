@@ -9,28 +9,24 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import Canne.dao.IPlanningDao;
 import Canne.dao.modele.Planning;
 
-public class MariaPlanningDao implements IPlanningDao {
+public class MariaPlanningDao {
 
     DataSource ds;
     Connection c;
     List<Planning> listePlanning = new ArrayList<>();
 	
-    @Override
 	public void setDataSource(DataSource ds) {
 		this.ds = ds;
 		
 	}
 
-	@Override
 	public void setConnection(Connection c) {
 		this.c = c;
 		
 	}
 
-	@Override
 	public List<Planning> listeDesPlannings() {
 		ResultSet rset=null;
 		Statement stmt=null;

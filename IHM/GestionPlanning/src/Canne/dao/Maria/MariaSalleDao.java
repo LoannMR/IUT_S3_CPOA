@@ -9,28 +9,24 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import Canne.dao.ISalleDao;
 import Canne.dao.modele.Salle;
 
-public class MariaSalleDao implements ISalleDao{
+public class MariaSalleDao{
 
 	DataSource ds;
     Connection c;
     List<Salle> listeSalle = new ArrayList<>();
 	
-    @Override
 	public void setDataSource(DataSource ds) {
 		this.ds = ds;
 		
 	}
 
-	@Override
 	public void setConnection(Connection c) {
 		this.c = c;
 		
 	}
 
-	@Override
 	public List<Salle> listeDesSalles() {
 		ResultSet rset=null;
 		Statement stmt=null;
@@ -64,13 +60,13 @@ public class MariaSalleDao implements ISalleDao{
 	}
 
 	
-	public Salle getPlaceOrdered() {
+	public List<Salle> getPlaceOrdered() {
 		ResultSet rset=null;
 		Statement stmt=null;
 		Salle salle = null;
 		try {
 			stmt= c.createStatement();
-			rset = stmt.executeQuery("SELECT * from Salle where Order by nbPlace desc");
+			rset = stmt.executeQuery("SELECT * from Salle Order by nbPlace desc");
 			while (rset.next()) {
 				int id = rset.getInt("idSalle");
 				String nomSalle = rset.getString("nomSalle");
@@ -78,6 +74,7 @@ public class MariaSalleDao implements ISalleDao{
 				String categorie = rset.getString("categorie");
 				
 				salle = new Salle(id, nbPlaces, nomSalle, categorie);
+                                listeSalle.add(salle);
 			}
 		}
 		catch (SQLException exc) {
@@ -91,7 +88,7 @@ public class MariaSalleDao implements ISalleDao{
 				
 			}
 		}
-		return salle;
+		return listeSalle;
 	}
 	
 	

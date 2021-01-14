@@ -9,28 +9,24 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import Canne.dao.IFilmDao;
 import Canne.dao.modele.Film;
 
-public class MariaFilmDao implements IFilmDao{
+public class MariaFilmDao {
 
 	DataSource ds;
     Connection c;
     List<Film> listeFilm = new ArrayList<>();
 
-    @Override
 	public void setDataSource(DataSource ds) {
 		this.ds = ds;
 		
 	}
 
-	@Override
 	public void setConnection(Connection c) {
 		this.c = c;
 		
 	}
 
-	@Override
 	public List<Film> listeDesFilms() {
 		ResultSet rset=null;
 		Statement stmt=null;

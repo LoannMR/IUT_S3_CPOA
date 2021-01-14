@@ -6,7 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.GroupLayout;
@@ -14,17 +16,20 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.LayoutStyle;
 
+import Canne.dao.Maria.Categorie;
 import Canne.dao.Maria.MariaFilmDao;
 import Canne.dao.Maria.MariaSalleDao;
 import Canne.dao.Maria.MariaSeanceDao;
 import Canne.dao.modele.Film;
 import Canne.dao.modele.Salle;
 import Canne.dao.modele.Seance;
+import Canne.vue.Fonctions.Fonctions;
 
 @SuppressWarnings("serial")
 public class FramePlanning extends JPanel{
@@ -41,6 +46,7 @@ public class FramePlanning extends JPanel{
 	private JComboBox<String> selectJour;
 	private JButton previous, next, createPlanning, addSeance;
 	private List<GrillePlanning> listGp = new ArrayList<>();
+	private HashMap<String, GrillePlanning> GPParNomSalle = new HashMap<>();
 	private int id;
 	
 	public FramePlanning(Frame f, int idPlanning) {
@@ -79,7 +85,7 @@ public class FramePlanning extends JPanel{
 			
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				listSeance = seanceDao.listSeancePlanning(id);
+				listSeance = seanceDao.listSeancePlanning(id, (String) selectJour.getSelectedItem());
 				for(GrillePlanning gp : listGp) {
 					gp.clearSeance();
 					for(Seance s : listSeance) {
@@ -129,6 +135,7 @@ public class FramePlanning extends JPanel{
 			scroll.setPreferredSize(new Dimension(500, 600));
 			tabbedPane.addTab(listSalle.get(i).getNomSalle(), scroll);
 			listGp.add(gp);
+			GPParNomSalle.put(listSalle.get(i).getNomSalle(), gp);
 		}
 		
 		tabbedPane.setBounds(0, 100, (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth()-115, (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight()-400);
@@ -141,8 +148,18 @@ public class FramePlanning extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				Fonctions fonction = new Fonctions(f.getDataSourceDAO(), f.getConnexionBD(), id);
+				try {
+					fonction.genererPlaning();
+					List<List<Seance>> listJour = fonction.getPlanning();
+					for(List<Seance> ls : listJour) {
+						for(Seance s : ls)
+							seanceDao.insertSeance(s);
+					}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		add(createPlanning);
@@ -154,12 +171,11 @@ public class FramePlanning extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ajoutSeance();
-				
 			}
 		});
 		add(addSeance);
 		
-		listSeance = seanceDao.listSeancePlanning(id);
+		listSeance = seanceDao.listSeancePlanning(id, (String) selectJour.getSelectedItem());
 		for(GrillePlanning gp : listGp) {
 			gp.clearSeance();
 			for(Seance s : listSeance) {
@@ -172,12 +188,15 @@ public class FramePlanning extends JPanel{
 	}
 	
 	JComboBox<String> boxFilm, boxSalle, boxHeure;
+	String[] creneauLM = {"08h30", "11h30", "12h00", "12h30", "13h00", "13h30", "14h00", "15h00", "15h30", "16h00", "18h00", "18h30", "19h00", "21h00", "21h30", "22h00"};
 	
 	private void ajoutSeance() {
 		
 		boxFilm = new JComboBox<>();
         boxSalle = new JComboBox<>();
         boxHeure = new JComboBox<>();
+        
+        listSeance = seanceDao.listSeancePlanning(id, (String) selectJour.getSelectedItem());
         
 		JDialog dialog = new JDialog();
 		dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -190,24 +209,26 @@ public class FramePlanning extends JPanel{
         for(Salle s : listSalle) {
         	boxSalle.addItem(s.getNomSalle());
         }
+        boxSalle.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				setFilm((String) boxSalle.getSelectedItem());
+				
+			}
+		});	
         
-        int duree = 60*8+30, min = 0 , heure = 0;
-		String text = "00h00";
-		for(int i=0;i<31;i++) {
-			text = "00h00";
-			min = duree%60;
-			heure = (duree-min)/60;
-			if(heure < 10) text = text.replace("00h", "0" + heure + "h");
-			else text = text.replace("00h", heure + "h");
-			if(min < 10) text = text.replace("h00", "h0" + min);
-			else text = text.replace("h00", "h" + min);
-			boxHeure.addItem(text);
-			duree += 30;
-		}
+        boxFilm.addItemListener(new ItemListener() {
+		@Override
+			public void itemStateChanged(ItemEvent e) {
+				setHeure((String) boxFilm.getSelectedItem(), (String) boxSalle.getSelectedItem());
+				
+			}
+		});
+        
+		setFilm((String) boxSalle.getSelectedItem());
 		
-		for(Film f : listFilm) {
-			boxFilm.addItem(f.getNomFilm());
-		}
+		setHeure((String) boxFilm.getSelectedItem(), (String) boxSalle.getSelectedItem());
 		
 		labelFilm.setText("Film : ");
 
@@ -289,6 +310,13 @@ public class FramePlanning extends JPanel{
 				}
 				
 				String heure = (String) boxHeure.getSelectedItem();
+				if(heure == null || nomFilm == null || nomSalle == null) {
+					JOptionPane optionPane = new JOptionPane("Un champ est vide", JOptionPane.ERROR_MESSAGE);    
+					JDialog pane = optionPane.createDialog("Ajout Impossible");
+					pane.setVisible(true);
+					dialog.dispose();
+					return;
+				}
 				
 				Seance s = new Seance(-1, id, idFilm, idSalle, (String) selectJour.getSelectedItem(), heure);
 				seanceDao.insertSeance(s);
@@ -306,11 +334,135 @@ public class FramePlanning extends JPanel{
 			}
 		});
         
+        
+        
+        
         dialog.pack();
         dialog.setVisible(true);
 	}
 
-
+	public void setFilm(String nomSalle) {
+		Salle s = null;
+		int index = 0;
+		while(s == null) {
+			if(listSalle.get(index).getNomSalle().equalsIgnoreCase(nomSalle)) {
+				s = listSalle.get(index);
+			}
+			index++;
+		}
+		boxFilm.removeAllItems();
+		for(Film f : listFilm) {
+			if(s.getListCategorie().contains(f.getCategorie())) {
+				boxFilm.addItem(f.getNomFilm());
+			}
+		}
+	}
 	
+	public void setHeure(String nomFilm, String nomSalle) {
+		
+		Film f = null;
+		int index = 0;
+		while(f == null && index < listFilm.size()) {
+			if(listFilm.get(index).getNomFilm().equalsIgnoreCase(nomFilm)) {
+				f = listFilm.get(index);
+			}
+			index++;
+		}
+		if(f == null) f = listFilm.get(0);
+		
+		GrillePlanning gp = GPParNomSalle.get(nomSalle);
+		List<Seance> seanceGP = gp.getListSeance();
+		List<String> horaireUsed = new ArrayList<>();
+		
+		String text;
+		for(Seance s : seanceGP) {
+			String heureStr = s.getHoraire();
+			horaireUsed.add(heureStr);
+			
+			int horaireDebut = Integer.parseInt(heureStr.substring(0, 2))*60 + Integer.parseInt(heureStr.substring(3));
+			int duree = 0;
+			index = 0;
+			while(duree == 0 && index < listFilm.size()) {
+				if(listFilm.get(index).getId() == s.getIdFilm()) {
+					duree = listFilm.get(index).getDuree();
+				}
+				index++;
+			}
+			
+			while(duree>=30) {
+				horaireDebut += 30;
+				text = timeToString(horaireDebut);
+				horaireUsed.add(text);
+				duree -= 30;
+			}
+			
+		}
+		
+		
+		ArrayList<String> temp = new ArrayList<>();
+		int heureMin = 0, duree = 0;
+		boxHeure.removeAllItems();
+		if(f.getCategorie() == Categorie.LM || f.getCategorie() == Categorie.UCR ) {
+			for(String heure : creneauLM) {
+				if(!horaireUsed.contains(heure)) {
+					duree = f.getDuree();
+					temp.clear();
+					heureMin = Integer.parseInt(heure.substring(0, 2))*60 + Integer.parseInt(heure.substring(3));
+					while(duree >= 30) {
+						heureMin += 30;
+						text = timeToString(heureMin);
+						temp.add(text);
+						duree -= 30;
+					}
+					
+					if(!containsOneOf(horaireUsed, temp)) {
+						boxHeure.addItem(heure);
+					}
+				}
+			}
+		}
+		else {
+			heureMin = 60*8+30;
+			String heure = "00h00";
+			for(int i=0;i<31;i++) {
+				heure = timeToString(heureMin);
+				if(!horaireUsed.contains(heure)) {
+					duree = f.getDuree();
+					temp.clear();
+					while(duree >= 30) {
+						heureMin += 30;
+						text = timeToString(heureMin);
+						temp.add(text);
+						duree -= 30;
+					}
+					if(!containsOneOf(horaireUsed, temp)) {
+						boxHeure.addItem(heure);
+					}
+				}
+				heureMin += 30;
+			}
+		}
+	}
+
+	private boolean containsOneOf(List<String> collection, List<String> test) {
+		boolean verif = false;
+		int index = 0;
+		while(!verif && index < test.size()) {
+			verif = collection.contains(test.get(index));
+			index++;
+		}
+		return verif;
+	}
+	
+	private String timeToString(int duree) {
+		String text = "00h00";
+		int min = duree%60;
+		int h = (duree-min)/60;
+		if(h < 10) text = text.replace("00h", "0" + h + "h");
+		else text = text.replace("00h", h + "h");
+		if(min < 10) text = text.replace("h00", "h0" + min);
+		else text = text.replace("h00", "h" + min);
+		return text;
+	}
 	
 }
