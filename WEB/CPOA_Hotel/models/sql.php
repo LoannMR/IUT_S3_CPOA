@@ -32,10 +32,12 @@
 	  }
 	  catch(PDOException $e)
 	  {
-		  if(DEBUG)
-			  die ('Erreur : '.$e->getMessage());
-		  //Si erreur execution
-		  $_SESSION['error'] = 'query';
+		if(DEBUG)
+		{
+			die ('Erreur : '.$e->getMessage());
+		$erreur = 'query';
+		}
+						
 	  }
 	  //Si on attend à recevoir au moins une ligne
 	  if($renvoit)
