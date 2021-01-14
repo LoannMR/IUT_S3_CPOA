@@ -2,9 +2,8 @@
 /** Création des formulaires
  * Soit pour un Gerant ou un VIP
  */
-
-
 require_once(PATH_LIB.'foncBase.php');
+
 if($_SESSION['statut'] == "gerant")
 { ?>
   <!-- Hotel-->

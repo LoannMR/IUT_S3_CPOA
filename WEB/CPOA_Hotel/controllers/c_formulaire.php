@@ -4,7 +4,7 @@
     //require_once(PATH_MODELS.$page.'.php');
     
     //Quel formulaire ?
-    $formulaire = htmlspecialchars($_GET['type']);
+    $_SESSION['statut'] = htmlspecialchars($_GET['statut']);
 
     //Appel de la vue
     require_once(PATH_VIEWS.$page.'.php'); 
