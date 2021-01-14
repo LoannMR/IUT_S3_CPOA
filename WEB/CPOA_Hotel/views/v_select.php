@@ -4,4 +4,10 @@ Choix de l'hôtel à modifier :
     <button>Rechercher</button>
     </input>
 
+    <?php
+    foreach($hotels as $hotel)
+    {
+        echo $hotels;
+    }
+    ?>
     <button>Retour</button>

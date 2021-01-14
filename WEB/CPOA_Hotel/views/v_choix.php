@@ -8,7 +8,7 @@
 if($_SESSION['statut'] == "gerant")
 { ?>
     <a href ="index.php?page=formulaire&statut=gerant"><button >Créer un Hôtel</button></a>
-    <a href ="index.php?page=formulaire&statut=gerant"><button >Modifier un hôtel</button></a>
+    <a href ="index.php?page=select&statut=gerant"><button >Modifier un hôtel</button></a>
 <?php
 }
 else // Vip
