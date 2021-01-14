@@ -11,7 +11,7 @@
   <label for="POST-name">Adresse</label>
   <input id="POST-name" type="text" name="name">
 
-<!-- Formulaire avec un fieldset, un legend, et un label -->
+
   <fieldset>
     <legend>Caractéristique</legend>
     <label>Plage<input type="checkbox" name="checkbox" id="checkbox"> </label>
