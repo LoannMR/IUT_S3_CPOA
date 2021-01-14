@@ -23,5 +23,5 @@
   </fieldset>
 
 <button>Annuler</button>
-<input type="submit" name="valider">
+<input type="submit" name="valider" value="Valider">
 </form>

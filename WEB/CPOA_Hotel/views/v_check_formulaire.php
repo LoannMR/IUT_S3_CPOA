@@ -32,5 +32,5 @@ if(isset($_POST['sport']))  echo "Salle de sport<br/>";
 
 ?>
 <form>
-<input type="submit" name="valider">
+<input type="submit" name="valider" value="Valider">
 </form>
