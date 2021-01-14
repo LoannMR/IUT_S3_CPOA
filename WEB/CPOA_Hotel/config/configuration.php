@@ -29,7 +29,6 @@ define('PATH_IMAGES', PATH_ASSETS.'images/');
 define('PATH_SCRIPTS', PATH_ASSETS.'scripts/');
 //Sous dossiers vue & controller
 define('PATH_VIEWS_VIP',PATH_VIEWS.'vip/');
-define('PATH_CONTROLLERS_VIP',PATH_CONTROLLERS.'vip/');
 
 //fichiers
 define('PATH_LOGO', PATH_IMAGES.'logo.png');
