@@ -31,4 +31,4 @@ if(isset($_POST['sport']))  echo "Salle de sport<br/>";
 ?>
 
 <button>Retour</button>
-<input type="submit" name="valider">
+<input type="submit" name="valider" value="Valider">
