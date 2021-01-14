@@ -27,15 +27,21 @@ define('PATH_TEXTES','./languages/');
 define('PATH_CSS', PATH_ASSETS.'css/');
 define('PATH_IMAGES', PATH_ASSETS.'images/');
 define('PATH_SCRIPTS', PATH_ASSETS.'scripts/');
+//Sous dossiers vue & controller
+define('PATH_VIEWS_VIP',PATH_VIEWS.'vip/');
+define('PATH_CONTROLLERS_VIP',PATH_CONTROLLERS.'vip/');
 
 //fichiers
 define('PATH_LOGO', PATH_IMAGES.'logo.png');
 define('PATH_MENU', PATH_VIEWS.'menu.php');
 
-//Dictionnaire
-$listeSelection = [
-    0 => "Toutes les photos",
-    1 => "Animaux",
-    2 => "Repas",
-    3 => "Monuments",
-];
+//Caractéristique
+$listCaracteristique = array(
+    'Plage',
+    'Luxe',
+    'Montagne',
+    'Restaurant',
+    'Piscine',
+    'Sport',
+);
+$type = "Vip"; //Vip ou Gerant

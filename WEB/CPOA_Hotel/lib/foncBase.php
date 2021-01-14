@@ -16,3 +16,18 @@ function choixAlert($message)
   }
   return $alert;
 }
+
+function createCheckboxs($array)
+{
+    foreach($array as $mot)
+    {
+      //On met tout en minuscule
+      $min = strtolower($mot);
+
+        ?>
+        <label><?=($mot == 'Sport')?'Salle de Sport' : $mot ?>
+            <input type="checkbox" name="<?= $min ?>">
+        </label>
+        <?php
+    }
+}
