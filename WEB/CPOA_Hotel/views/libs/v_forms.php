@@ -18,7 +18,7 @@ if($_SESSION['statut'] == "gerant")
       <?php createCheckboxs($listCaracteristique)?>
     </fieldset>
 
-    <input type="submit" name="valider">
+    <input type="submit" name="valider" value="Valider">
   </form>
 
   <?php
@@ -48,7 +48,7 @@ else
       <?php createCheckboxs($listCaracteristique)?>
     </fieldset>
 
-    <input type="submit" name="valider">
+    <input type="submit" name="valider" value="Valider">
   </form>
 <?php
 }
