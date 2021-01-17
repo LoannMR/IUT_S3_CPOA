@@ -1,5 +1,5 @@
 <?php
-    
+    unset($_SESSION['donneeFormulaire']);
     //Appel du model
     require_once(PATH_MODELS.$page.'.php');
     

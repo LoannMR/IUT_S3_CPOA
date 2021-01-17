@@ -4,7 +4,9 @@ Choix de l'hôtel à modifier :
     <button>Rechercher</button>
     </input>
 
+    
     <?php
+    var_dump($hotels);
     foreach($hotels as $hotel)
     {
         echo $hotels;

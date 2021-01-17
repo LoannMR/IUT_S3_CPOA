@@ -1,36 +1,13 @@
-Votre choix ....
-<?php 
-$nom = $_POST['nom'];
-$nb_personne = $_POST['nb_personne'];
-$nb_chambre = $_POST['nb_chambre'];
-$adresse = $_POST['adresse'];
-
-
-
-$formulaire = array (
-    'Nom' => $nom,
-    'Nombre de personnes' => $nb_personne,
-    'Nombre de chambre' => $nb_chambre,
-    'Adresse' => $adresse,
-);
-
-?>
-<p><?=$formulaire['Nom']?></p>
-<p><?=$formulaire['Nombre de personnes']?></p>
-<p><?=$formulaire['Nombre de chambre']?></p>
-<p><?=$formulaire['Adresse']?></p>
-
 <?php
+require_once(PATH_LIB.'foncBase.php');
+  
+//Header
+require_once(PATH_VIEWS.'header.php');
 
-if(isset($_POST['plage']))  echo "Plage<br/>";
-if(isset($_POST['luxe']))  echo "Luxe<br/>";
-if(isset($_POST['montagne']))  echo "Montagne<br/>";
-if(isset($_POST['resto']))  echo "Restaurant<br/>";
-if(isset($_POST['piscine']))  echo "Piscine<br/>";
-if(isset($_POST['sport']))  echo "Salle de sport<br/>";
+//Contenu
+?><h2>Valider ces informations ? </h2> <?php
+require_once('libs/v_forms.php');
 
-
+//Footer
+require_once(PATH_VIEWS.'footer.php');
 ?>
-<form>
-<input type="submit" name="valider" value="Valider">
-</form>
