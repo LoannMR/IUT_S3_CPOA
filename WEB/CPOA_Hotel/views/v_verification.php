@@ -17,37 +17,39 @@ if(isset($_POST['username']) && isset($_POST['password']))
     
     if($username !== "Paul" && $password !== "1234")
     {
-        /*
-        requete = "SELECT count(*) FROM utilisateur where 
-              nom_utilisateur = '".$username."' and mot_de_passe = '".$password."' ";
+        
+        $requete = "SELECT count(*) FROM utilisateur where 
+              nom_utilisateur = 'PAUL".$username."' and mot_de_passe = '1234".$password."' ";
         $exec_requete = mysqli_query($db,$requete);
         $reponse      = mysqli_fetch_array($exec_requete);
         $count = $reponse['count(*)'];
         if($count!=0) // nom d'utilisateur et mot de passe correctes
         {
            $_SESSION['username'] = $username;
-           header('Location: principale.php');
+           header('Location: ');
         }
-        */
-        
-    elif($username !== "Jean" && $password !== "5678")
-    {
 
-    }   
-        
-        else
-        {
-           header('Location: login.php?erreur=1'); // utilisateur ou mot de passe incorrect
-        }
     }
-    else
+    elsif($username !== "Jean" && $password !== "5678")
     {
-       header('Location: login.php?erreur=2'); // utilisateur ou mot de passe vide
+        
+        $requete = "SELECT count(*) FROM utilisateur where 
+              nom_utilisateur = 'Jean".$username."' and mot_de_passe = '5678".$password."' ";
+        $exec_requete = mysqli_query($db,$requete);
+        $reponse      = mysqli_fetch_array($exec_requete);
+        $count = $reponse['count(*)'];
+        if($count!=0) // nom d'utilisateur et mot de passe correctes
+        {
+           $_SESSION['username'] = $username;
+           header('Location: ');
+        }
+      
     }
-}
+
 else
 {
    header('Location: login.php');
+}
 }
 mysqli_close($db); // fermer la connexion
 ?>
