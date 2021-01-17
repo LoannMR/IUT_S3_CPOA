@@ -21,6 +21,7 @@
  h2
  {
     background-color: lightgreen;
+    color : Black;
  }
 
  /* Formulaires */
@@ -41,6 +42,14 @@
     height:3em;
     width:50%;
     font-weight: bold;
+ }
+
+ div.listes
+ {
+    text-align: left;
+    background-color: gray;
+    border: medium solid gray;
+    margin-top: 1em;
  }
 
 

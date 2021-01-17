@@ -29,18 +29,12 @@ function createCheckboxs($array)
       if(!empty($_SESSION['donneeFormulaire']))
       {
         //On récupère la variable qui stock les caractéristiques cochées
-        foreach($_SESSION['donneeFormulaire'] as $key => $value)
+        foreach($_SESSION['donneeFormulaire']['caracteristique'] as $check)
         {
-          if($key == "caracteristique")
-          {
-            //On vérifie les caractéristiques cochées
-            foreach($value as $check)
-            {
-              if($min == $check)
-                $toCheck = true;
-            }
+            if($min == $check)
+              $toCheck = true;
+            
             break;
-          }
         }
       }
       //ajout des checkboxs
@@ -58,7 +52,7 @@ function validate()
   $erreur = null;
   if($_SESSION['statut']=='gerant')
     {
-      if(empty($_POST['nom']) || empty($_POST['nom']) || empty($_POST['nb_personne']) || empty($_POST['nb_chambre']) || empty($_POST['adresse']))
+      if(empty($_POST['nom']) || empty($_POST['nb_chambre']) || empty($_POST['classification']))
         $erreur = "Tous les champs doivent être remplis hormis les caractéristiques !";
     }
     //Si formulaire reservation

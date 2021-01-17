@@ -32,17 +32,15 @@ $type = "vip";
 if($_SESSION['statut'] == "gerant")
 { ?>
   <!-- Hotel-->
-  <form action="index.php?page=check" method="post">
+  <form action=<?=isset($desactivate)? 'index.php?page=exec' : 'index.php?page=check'?> method="post">
     
     <fieldset class="form" <?=isset($desactivate)?  'disabled' : 'enabled'?>>
       <label> Nom : 
       <input type="text" name="nom" placeholder="Nom" value=<?=isset($donneeFormulaire['nom'])? $donneeFormulaire['nom'] : ''?>> </label> </br>
-      <label> Nombre de personne :
-      <input type="number" min="1" name="nb_personne" placeholder="1" value=<?=isset($donneeFormulaire['nb_personne'])? $donneeFormulaire['nb_personne'] : ''?>> </label> </br>
       <label> Nombre de chambre :
-      <input type="number" min="1" name="nb_chambre" placeholder="1" value=<?=isset($donneeFormulaire['nb_chambre'])? $donneeFormulaire['nb_chambre'] : ''?>> </label> </br>
-      <label> Localisation :
-      <input type="text" name="adresse" placeholder="Adresse" value=<?=isset($donneeFormulaire['adresse'])? $donneeFormulaire['adresse'] : ''?>> </label> </br> </br>
+      <input type="number" min="1" name="nb_chambre" value=<?=isset($donneeFormulaire['nb_chambre'])? $donneeFormulaire['nb_chambre'] : 1?>> </label> </br>
+      <label> Classification :
+      <input type="number" min="0" max="5" name="classification" value=<?=isset($donneeFormulaire['classification'])? $donneeFormulaire['classification'] : 0?>> </label> </br> </br>
       <fieldset>
         <label> Caracteristiques de l'hotel </br>
         <?php createCheckboxs($listCaracteristique)?> </label>
@@ -58,7 +56,7 @@ if($_SESSION['statut'] == "gerant")
 else
 { ?>
   <!-- Reservation-->
-  <form action="index.php?page=check" method="post">
+  <form action=<?=isset($desactivate)? 'index.php?page=exec' : 'index.php?page=check'?> method="post">
 
     <fieldset class="form" <?=isset($desactivate)?  'disabled' : 'enabled'?>>
       <label> Nom :
@@ -66,9 +64,9 @@ else
       <label> Prenom :
       <input type="text" name="prenom" placeholder="Prénom" value=<?=isset($donneeFormulaire['prenom'])? $donneeFormulaire['prenom'] : ''?>> </label> </br>
       <label> Nombre de personne :
-      <input type="number" min="1" name="nb_personne" placeholder="1" value=<?=isset($donneeFormulaire['nb_personne'])? $donneeFormulaire['nb_personne'] : ''?>> </label> </br>
+      <input type="number" min="1" name="nb_personne" value=<?=isset($donneeFormulaire['nb_personne'])? $donneeFormulaire['nb_personne'] : 1?>> </label> </br>
       <label> Nombre de chambres :
-      <input type="number" min="1" name="nb_chambre" placeholder="1" value=<?=isset($donneeFormulaire['nb_chambre'])? $donneeFormulaire['nb_chambre'] : ''?>> </label> </br>
+      <input type="number" min="1" name="nb_chambre" value=<?=isset($donneeFormulaire['nb_chambre'])? $donneeFormulaire['nb_chambre'] : 0?>> </label> </br>
 
       <label>Type de personnes :</label>
       <!--La selection -->

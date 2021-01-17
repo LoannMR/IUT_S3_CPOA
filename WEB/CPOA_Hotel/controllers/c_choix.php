@@ -4,6 +4,7 @@
 
     //Vérification du formulaire + récupération des variables
     $_SESSION['statut'] = htmlspecialchars($_GET['statut']);
+    $_SESSION['idPersonne'] = 1;
 
 
 

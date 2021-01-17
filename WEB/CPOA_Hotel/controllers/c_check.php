@@ -29,9 +29,8 @@
     {
         $donneeFormulaire = array(
             "nom" => htmlspecialchars($_POST['nom']),
-            "nb_personne" => htmlspecialchars($_POST['nb_personne']),
             "nb_chambre" => htmlspecialchars($_POST['nb_chambre']),
-            "adresse" => htmlspecialchars($_POST['adresse']),
+            "classification" => htmlspecialchars($_POST['classification']),
             "caracteristique" => $checkeds,
         );
         $_SESSION['donneeFormulaire'] = $donneeFormulaire;
