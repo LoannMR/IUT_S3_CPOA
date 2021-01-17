@@ -23,7 +23,6 @@
             array_push($checkeds,$c);
         }
     }
-    var_dump($checkeds);
 
     //Si formulaire Hotel
     if($_SESSION['statut']=='gerant')
