@@ -48,7 +48,7 @@ if($_SESSION['statut'] == "gerant")
 
     </fieldset>
 
-    <input type="submit" name="valider">
+    <input type="submit" name="valider" value="Valider">
   </form>
 
   <?php
@@ -112,7 +112,7 @@ else
 
     </fieldset>
 
-    <input type="submit" name="valider">
+    <input type="submit" name="valider" value="Valider">
   </form>
 <?php
 }
