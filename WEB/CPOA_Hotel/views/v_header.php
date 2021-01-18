@@ -16,9 +16,9 @@
 	<body>
 		<!-- En-tête -->
 		<header class="header" >
-			<img src=<?=PATH_IMAGES."Logo_Canne.png"?> alt="palme">
 		</header>
 		<!-- Menu -->
 		<?php include(PATH_VIEWS.'menu.php'); ?>
+		<img src=<?=PATH_IMAGES."Logo_Canne.png"?> alt="palme">
 		<!-- Vue -->
 		
