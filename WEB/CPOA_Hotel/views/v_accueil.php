@@ -11,7 +11,6 @@
     <div id="container">    
             <!-- zone de connexion -->
             <form action="index.php" method="POST">
-                <img src="Logo_Canne.png" alt="palme">
                 <h3>Veuillez vous identifier</h3>
                 <input type="text" placeholder="Nom d'utilisateur" name="username" required>
                 <input type="password" placeholder="Mot de passe" name="password" required>
