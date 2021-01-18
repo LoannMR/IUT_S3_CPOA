@@ -5,7 +5,6 @@
 	$requete = "SELECT * FROM personne where identifiant = '".$username."' and mdp = '".$password."' ";
 
 	$ligne = execRequete($bdd,$requete,true);
-	echo 'test';
 	
 ?>
 
