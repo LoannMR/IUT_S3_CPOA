@@ -9,6 +9,7 @@ const BD_USER = 'root';
 const BD_PWD = 'root';
 
 
+
 // Langue du site
 const LANG ='FR-fr';
 

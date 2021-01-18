@@ -57,6 +57,13 @@ else
 { ?>
   <!-- Reservation-->
   <form action=<?=isset($desactivate)? 'index.php?page=exec' : 'index.php?page=searchHotel'?> method="post">
+    <?php 
+      if(isset($_SESSION['donneeFormulaire']['id'])) {
+        ?>
+        <input type="hidden" name="id" value=<?=$_SESSION['donneeFormulaire']['id']?>>
+        <?php
+      }
+    ?>
     <input type="hidden" name="idHotel" value=<?=isset($hotel)? $hotel[0]["idHotel"] : ''?>>
     <input type="hidden" name="hotelType" value=<?=isset($hotel)? $hotel[0]["type"] : ''?>>
     <fieldset class="form" <?=isset($desactivate)?  'disabled' : 'enabled'?>>

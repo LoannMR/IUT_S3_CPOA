@@ -19,7 +19,14 @@ switch($_SESSION['statut'])
       
     break;
     case 'staff':
-      ?> <h2>Faire une reservation </h2> <?php
+      if(isset($_GET['reservation']))
+    {
+      ?> <h2>Modifier une réservation </h2> <?php
+    }
+    else
+    {
+      ?> <h2>Faire une réservation </h2> <?php
+    }
       break;
 }
 require_once('libs/v_forms.php');
