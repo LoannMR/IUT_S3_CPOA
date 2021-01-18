@@ -21,7 +21,7 @@
     //Si formulaire reservation
     if($_SESSION['statut']=='staff')
     {
-    	if(!isset($_SESSION['donneeFormulaire']['id']) or isset($_POST['id'])){
+    	if(isset($_SESSION['donneeFormulaire']['id']) or isset($_POST['id'])){
     		$donneeFormulaire = array(
 	            "nom" => htmlspecialchars($_POST['nom']),
 	            "prenom" => htmlspecialchars($_POST['prenom']),
@@ -34,6 +34,18 @@
         	);
         	$_SESSION['donneeFormulaire'] = $donneeFormulaire;
     	}
+        else {
+            $donneeFormulaire = array(
+                "nom" => htmlspecialchars($_POST['nom']),
+                "prenom" => htmlspecialchars($_POST['prenom']),
+                "nb_chambre" => htmlspecialchars($_POST['nb_chambre']),
+                "type" => htmlspecialchars($_POST['type']),
+                "d_arr" => htmlspecialchars($_POST['d_arr']),
+                "d_dep" => htmlspecialchars($_POST['d_dep']),
+                "caracteristique" => $checkeds,
+            );
+            $_SESSION['donneeFormulaire'] = $donneeFormulaire;
+        }
         
     }
     //Appel du model
