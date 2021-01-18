@@ -38,12 +38,21 @@
     //RESERVATION
     else
     {
-        $requete = "INSERT INTO reservation (idStaff, idHotel, nbChambre, date_debut, date_fin) 
+    	if(isset($_POST['hotelType'])){
+    		if(strtolower($_POST['hotelType']) == 'null' or $_POST['hotelType'] == ''){
+    			$requete = "UPDATE hotel set type = '".$_SESSION['donneeFormulaire']['type']."' WHERE idHotel = ".$_POST['idHotel'];
+    			execRequete($bdd,$requete,false);
+    		}
+    	}
+
+        $requete = "INSERT INTO reservation (idStaff, idHotel, nbChambre, date_debut, date_fin, nom, prenom) 
             VALUES ('".$_SESSION['idPersonne']."',
                     '".$_POST['idHotel']."',
                     '".$_SESSION['donneeFormulaire']['nb_chambre']."',
                     '".$_SESSION['donneeFormulaire']['d_arr']."' ,
-                    '".$_SESSION['donneeFormulaire']['d_dep']."'
+                    '".$_SESSION['donneeFormulaire']['d_dep']."',
+                    '".$_SESSION['donneeFormulaire']['nom']."',
+                    '".$_SESSION['donneeFormulaire']['prenom']."'
                 )";
     }
     //Exécution de la requete

@@ -4,14 +4,18 @@
     require_once(PATH_LIB."foncBase.php");
 
     //Vérification du formulaire
-    $erreur = validate();
-    if($erreur != null)
-    {
-        ?>
-        <h1>Erreur : <?=$erreur?></h1>
-        <?php
-        exit();
+    if(!isset($_SESSION['donneeFormulaire'])){
+        $erreur = validate();
+        if($erreur != null)
+        {
+            echo "erreur";
+            ?>
+            <h1>Erreur : <?=$erreur?></h1>
+            <?php
+            exit();
+        }
     }
+    
 
     //Pour les caractéristiques
     $checkeds = array();

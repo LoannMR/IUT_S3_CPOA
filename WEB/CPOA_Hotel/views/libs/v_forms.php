@@ -1,6 +1,6 @@
 <?php
 /** Création des formulaires
- * Soit pour un Gerant ou un staff
+ * Soit pour un Gerant ou un VIP
  */
 require_once(PATH_LIB.'foncBase.php');
 
@@ -58,6 +58,7 @@ else
   <!-- Reservation-->
   <form action=<?=isset($desactivate)? 'index.php?page=exec' : 'index.php?page=searchHotel'?> method="post">
     <input type="hidden" name="idHotel" value=<?=isset($hotel)? $hotel[0]["idHotel"] : ''?>>
+    <input type="hidden" name="hotelType" value=<?=isset($hotel)? $hotel[0]["type"] : ''?>>
     <fieldset class="form" <?=isset($desactivate)?  'disabled' : 'enabled'?>>
       <label> Nom :
       <input type="text" name="nom" placeholder="Nom" value=<?=isset($_SESSION['donneeFormulaire']['nom'])? $_SESSION['donneeFormulaire']['nom'] : ''?>> </label> </br>
@@ -73,7 +74,7 @@ else
       <?php
       if(isset($_SESSION['donneeFormulaire']['type']))
       {
-        if($_SESSION['donneeFormulaire']['type'] == "staff")
+        if($_SESSION['donneeFormulaire']['type'] == "vip")
         {
           ?>
           <select name="type">

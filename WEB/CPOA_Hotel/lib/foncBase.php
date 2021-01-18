@@ -56,7 +56,7 @@ function validate()
         $erreur = "Tous les champs doivent être remplis hormis les caractéristiques !";
     }
     //Si formulaire reservation
-    if($_SESSION['statut']=='staff')
+    if($_SESSION['statut']=='vip')
     {
       if(empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['nb_personne']) || empty($_POST['nb_chambre']) || empty($_POST['type']) || empty($_POST['d_arr']) || empty($_POST['d_dep'])){
 
