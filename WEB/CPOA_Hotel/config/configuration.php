@@ -3,10 +3,10 @@
 const DEBUG = true; // production : false; dev : true
 
 // Accès base de données
-const BD_HOST = 'iutdoua-web.univ-lyon1.fr';
-const BD_DBNAME = 'p1911441';
-const BD_USER = 'p1911441';
-const BD_PWD = '456133';
+const BD_HOST = 'localhost';
+const BD_DBNAME = 'CPOA';
+const BD_USER = 'root';
+const BD_PWD = 'root';
 
 // Langue du site
 const LANG ='FR-fr';

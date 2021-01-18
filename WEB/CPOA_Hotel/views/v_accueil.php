@@ -12,7 +12,7 @@
             <!-- zone de connexion -->
             
             <form action="index.php?page=verification.php" method="POST">
-                <h2>Connexion</h2>
+                <h3>Veuillez vous identifier</h3>
                 <input type="text" placeholder="Nom d'utilisateur" name="username" required>
                 <input type="password" placeholder="Mot de passe" name="password" required>
                 <input type="submit" id='submit' value='Connexion' >
