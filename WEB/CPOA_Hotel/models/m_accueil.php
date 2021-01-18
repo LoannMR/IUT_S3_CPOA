@@ -4,12 +4,6 @@
 ?>
 
 
-<?php
-	include_once 'sql.php';
-	
-?>
-
-
 
 <?php
 session_start();
