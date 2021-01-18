@@ -7,6 +7,8 @@
         $password = htmlspecialchars($_POST['password']);
         //Appel du model
         require_once(PATH_MODELS.$page.'.php');
+
+        
     }
     
     
