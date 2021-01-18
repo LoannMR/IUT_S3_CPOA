@@ -9,14 +9,39 @@
         $caracteristiques = implode(' ',$_SESSION['donneeFormulaire']['caracteristique']);
     else
         $caracteristiques = null;
-    echo $caracteristiques;
-    
 
     //HOTEL
     if($_SESSION['statut']=='gerant')
     {
+        //Si il a modifie
+        if($_SESSION['donneeFormulaire']['id'] != null )
+        {
+            echo 'test';
+            //Si pas de caracteristique
+            if(!isset($_SESSION['donneeFormulaire']['caracteristique']))
+            {
+                $requete = "UPDATE hotel set 
+                            nomHotel = '".$_SESSION['donneeFormulaire']['nom']."',
+                            nbChambre = '".$_SESSION['donneeFormulaire']['nb_chambre']."',
+                            classification = '".$_SESSION['donneeFormulaire']['classification']."',
+                            caracteristique = null
+                             where idHotel = '".$_SESSION['donneeFormulaire']['id']."'";
+            }
+            //Sinon
+            else
+            {
+                $requete = "UPDATE hotel set 
+                            nomHotel = '".$_SESSION['donneeFormulaire']['nom']."',
+                            nbChambre = '".$_SESSION['donneeFormulaire']['nb_chambre']."',
+                            classification = '".$_SESSION['donneeFormulaire']['classification']."',
+                            caracteristique = '".$_SESSION['donneeFormulaire']['classification']."'
+                             where idHotel = '".$_SESSION['donneeFormulaire']['id']."'";    
+            }
+                      
+        }
+        //Sinon il le créee
         //Si il n'y a pas de caractéristique
-        if(!isset($_SESSION['donneeFormulaire']['caracteristique']))
+        else if(!isset($_SESSION['donneeFormulaire']['caracteristique']))
         {
             $requete = "INSERT INTO hotel (idGerant,nomHotel,nbChambre,classification,caracteristique) 
                         VALUES ('".$_SESSION['idPersonne']."',

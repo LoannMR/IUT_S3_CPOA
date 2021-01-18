@@ -27,11 +27,15 @@
             array_push($checkeds,$c);
         }
     }
-
+    if(isset($_SESSION['donneeFormulaire']['id']))
+        $id =$_SESSION['donneeFormulaire']['id'];
+    else
+        $id = null;
     //Si formulaire Hotel
     if($_SESSION['statut']=='gerant')
     {
         $donneeFormulaire = array(
+            "id" => $id,
             "nom" => htmlspecialchars($_POST['nom']),
             "nb_chambre" => htmlspecialchars($_POST['nb_chambre']),
             "classification" => htmlspecialchars($_POST['classification']),

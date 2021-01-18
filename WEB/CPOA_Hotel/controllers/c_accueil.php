@@ -17,7 +17,6 @@
         if($ligne[0]['statut'] == 'Gerant')
         {
             $_SESSION['statut'] = 'gerant';
-            
         }
         else if ($ligne[0]['statut'] == 'Staff')
         {
