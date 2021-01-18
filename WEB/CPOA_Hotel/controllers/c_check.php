@@ -51,5 +51,6 @@
         $_SESSION['donneeFormulaire'] = $donneeFormulaire;
     }
     $desactivate = true;
+    
     //Appel de la vue
     require_once(PATH_VIEWS.$page.'.php'); 

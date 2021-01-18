@@ -13,11 +13,13 @@
     //Contenu
     ?>
     <h2>Listes des hotels</h2>
+    
     <?php
     foreach($hotels as $hotel)
     {
         ?>
-        <div class="listes">
+        <a href="index.php?page=formulaire&hotel=<?=$hotel['idHotel']?>">
+        <div class="objet">
             <h3><?=$hotel['nomHotel']?></h3>  </br> 
              
             <p> Nombre de chambres : <?= $hotel['nbChambre']?> </br>
@@ -25,11 +27,11 @@
                 Caracteristiques : <?=$hotel['caracteristique']?> </br>
             </p>
         </div>
+        </a>
         <?php
         
     }
     ?>
-    <button>Retour</button>
 
     <?php
     //Footer
