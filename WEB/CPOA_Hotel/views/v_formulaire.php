@@ -8,7 +8,15 @@ require_once(PATH_VIEWS.'header.php');
 switch($_SESSION['statut'])
 {
   case 'gerant':
-    ?> <h2>Creer un hotel </h2> <?php
+    if(isset($_GET['hotel']))
+    {
+      ?> <h2>Modifier un hotel </h2> <?php
+    }
+    else
+    {
+      ?> <h2>Creer un hotel </h2> <?php
+    }
+      
     break;
     case 'staff':
       ?> <h2>Faire une reservation </h2> <?php
