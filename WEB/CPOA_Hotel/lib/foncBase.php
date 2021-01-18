@@ -26,15 +26,17 @@ function createCheckboxs($array)
 
       //Pour cocher les cases
       $toCheck = false;
-      if(!empty($_SESSION['donneeFormulaire']))
+      if(isset($_SESSION['donneeFormulaire']['caracteristique']))
       {
         //On récupère la variable qui stock les caractéristiques cochées
         foreach($_SESSION['donneeFormulaire']['caracteristique'] as $check)
         {
             if($min == $check)
+            {
               $toCheck = true;
-            
-            break;
+              break; // On sort
+            }
+              
         }
       }
       //ajout des checkboxs
