@@ -23,7 +23,6 @@ public class MariaSeanceDao {
 
 	public void setConnection(Connection c) {
 		this.c = c;
-		
 	}
 
 	public List<Seance> listeDesSeances() {
