@@ -3,10 +3,10 @@
 const DEBUG = true; // production : false; dev : true
 
 // Accès base de données
-const BD_HOST = 'iutdoua-web.univ-lyon1.fr';
-const BD_DBNAME = 'p1911441';
-const BD_USER = 'p1911441';
-const BD_PWD = '456133';
+const BD_HOST = 'localhost';
+const BD_DBNAME = 'cpoa';
+const BD_USER = 'root';
+const BD_PWD = 'root';
 
 // Langue du site
 const LANG ='FR-fr';
@@ -27,8 +27,6 @@ define('PATH_TEXTES','./languages/');
 define('PATH_CSS', PATH_ASSETS.'css/');
 define('PATH_IMAGES', PATH_ASSETS.'images/');
 define('PATH_SCRIPTS', PATH_ASSETS.'scripts/');
-//Sous dossiers vue & controller
-define('PATH_VIEWS_VIP',PATH_VIEWS.'vip/');
 
 //fichiers
 define('PATH_LOGO', PATH_IMAGES.'logo.png');

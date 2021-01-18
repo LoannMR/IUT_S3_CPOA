@@ -10,7 +10,7 @@ switch($_SESSION['statut'])
   case 'gerant':
     ?> <h2>Creer un hotel </h2> <?php
     break;
-    case 'vip':
+    case 'staff':
       ?> <h2>Faire une reservation </h2> <?php
       break;
 }

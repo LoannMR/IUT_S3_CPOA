@@ -36,7 +36,7 @@
         $_SESSION['donneeFormulaire'] = $donneeFormulaire;
     }
     //Si formulaire reservation
-    if($_SESSION['statut']=='vip')
+    if($_SESSION['statut']=='staff')
     {
         if(!isset($_SESSION['donneeFormulaire'])){
             $donneeFormulaire = array(

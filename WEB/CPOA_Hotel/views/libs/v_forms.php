@@ -1,6 +1,6 @@
 <?php
 /** Création des formulaires
- * Soit pour un Gerant ou un VIP
+ * Soit pour un Gerant ou un staff
  */
 require_once(PATH_LIB.'foncBase.php');
 
@@ -73,7 +73,7 @@ else
       <?php
       if(isset($_SESSION['donneeFormulaire']['type']))
       {
-        if($_SESSION['donneeFormulaire']['type'] == "vip")
+        if($_SESSION['donneeFormulaire']['type'] == "staff")
         {
           ?>
           <select name="type">
