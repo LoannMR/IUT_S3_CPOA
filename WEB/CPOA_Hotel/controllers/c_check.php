@@ -38,18 +38,23 @@
     //Si formulaire reservation
     if($_SESSION['statut']=='vip')
     {
-        $donneeFormulaire = array(
-            "nom" => htmlspecialchars($_POST['nom']),
-            "prenom" => htmlspecialchars($_POST['prenom']),
-            "nb_personne" => htmlspecialchars($_POST['nb_personne']),
-            "nb_chambre" => htmlspecialchars($_POST['nb_chambre']),
-            "type" => htmlspecialchars($_POST['type']),
-            "d_arr" => htmlspecialchars($_POST['d_arr']),
-            "d_dep" => htmlspecialchars($_POST['d_dep']),
-            "caracteristique" => $checkeds,
-        );
-        $_SESSION['donneeFormulaire'] = $donneeFormulaire;
+        if(!isset($_SESSION['donneeFormulaire'])){
+            $donneeFormulaire = array(
+                "nom" => htmlspecialchars($_POST['nom']),
+                "prenom" => htmlspecialchars($_POST['prenom']),
+                "nb_chambre" => htmlspecialchars($_POST['nb_chambre']),
+                "type" => htmlspecialchars($_POST['type']),
+                "d_arr" => htmlspecialchars($_POST['d_arr']),
+                "d_dep" => htmlspecialchars($_POST['d_dep']),
+                "caracteristique" => $checkeds,
+            );
+            $_SESSION['donneeFormulaire'] = $donneeFormulaire;
+        }
+        
     }
     $desactivate = true;
+
+    //Appel du model
+    require_once(PATH_MODELS.$page.'.php');
     //Appel de la vue
     require_once(PATH_VIEWS.$page.'.php'); 

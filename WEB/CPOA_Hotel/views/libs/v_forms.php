@@ -56,24 +56,24 @@ if($_SESSION['statut'] == "gerant")
 else
 { ?>
   <!-- Reservation-->
-  <form action=<?=isset($desactivate)? 'index.php?page=exec' : 'index.php?page=check'?> method="post">
-
+  <form action=<?=isset($desactivate)? 'index.php?page=exec' : 'index.php?page=searchHotel'?> method="post">
+    <input type="hidden" name="idHotel" value=<?=isset($hotel)? $hotel[0]["idHotel"] : ''?>>
     <fieldset class="form" <?=isset($desactivate)?  'disabled' : 'enabled'?>>
       <label> Nom :
-      <input type="text" name="nom" placeholder="Nom" value=<?=isset($donneeFormulaire['nom'])? $donneeFormulaire['nom'] : ''?>> </label> </br>
+      <input type="text" name="nom" placeholder="Nom" value=<?=isset($_SESSION['donneeFormulaire']['nom'])? $_SESSION['donneeFormulaire']['nom'] : ''?>> </label> </br>
       <label> Prenom :
-      <input type="text" name="prenom" placeholder="Prénom" value=<?=isset($donneeFormulaire['prenom'])? $donneeFormulaire['prenom'] : ''?>> </label> </br>
+      <input type="text" name="prenom" placeholder="Prénom" value=<?=isset($_SESSION['donneeFormulaire']['prenom'])? $_SESSION['donneeFormulaire']['prenom'] : ''?>> </label> </br>
       <label> Nombre de personne :
-      <input type="number" min="1" name="nb_personne" value=<?=isset($donneeFormulaire['nb_personne'])? $donneeFormulaire['nb_personne'] : 1?>> </label> </br>
+      <input type="number" min="1" name="nb_personne" value=<?=isset($_SESSION['donneeFormulaire']['nb_personne'])? $_SESSION['donneeFormulaire']['nb_personne'] : 1?>> </label> </br>
       <label> Nombre de chambres :
-      <input type="number" min="1" name="nb_chambre" value=<?=isset($donneeFormulaire['nb_chambre'])? $donneeFormulaire['nb_chambre'] : 0?>> </label> </br>
+      <input type="number" min="1" name="nb_chambre" value=<?=isset($_SESSION['donneeFormulaire']['nb_chambre'])? $_SESSION['donneeFormulaire']['nb_chambre'] : 0?>> </label> </br>
 
       <label>Type de personnes :</label>
       <!--La selection -->
       <?php
-      if(isset($type))
+      if(isset($_SESSION['donneeFormulaire']['type']))
       {
-        if($type == "vip")
+        if($_SESSION['donneeFormulaire']['type'] == "vip")
         {
           ?>
           <select name="type">
@@ -94,20 +94,28 @@ else
       {
         ?>
         <select name="type">
-          <option value="jury">Jury</option> 
-          <option value="vip">VIP</option>
+          <option value="vip">VIP</option> 
+          <option value="jury">Jury</option>
         </select>
         <?php
       } ?>
       </br>
       <label> Date d'arrivée :
-      <input type="date" name="d_arr" value=<?=isset($donneeFormulaire['d_arr'])? $donneeFormulaire['d_arr'] : ''?>> </label> </br>
+      <input type="date" name="d_arr" value=<?=isset($_SESSION['donneeFormulaire']['d_arr'])? $_SESSION['donneeFormulaire']['d_arr'] : ''?>> </label> </br>
       <label> Date de départ:
-      <input type="date" name="d_dep" value=<?=isset($donneeFormulaire['d_dep'])? $donneeFormulaire['d_dep'] : ''?>> </label> </br> </br>
+      <input type="date" name="d_dep" value=<?=isset($_SESSION['donneeFormulaire']['d_dep'])? $_SESSION['donneeFormulaire']['d_dep'] : ''?>> </label> </br> </br>
 
       <fieldset>
         <label> Caractéristique voulue </br>
         <?php createCheckboxs($listCaracteristique)?> </label>
+        <?php 
+          if(isset($desactivate)){
+        ?>
+            <input type="hidden" name="idHotel" value=<?=isset($hotel)? $hotel[0]["idHotel"] : ''?>>
+            <label>Hotel <input type="text" name="nomHotel" value=<?=isset($hotel)? $hotel[0]["nomHotel"] : ''?>> </label>
+        <?php
+          }
+        ?>
       </fieldset>
 
     </fieldset>
