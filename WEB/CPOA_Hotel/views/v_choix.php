@@ -7,12 +7,14 @@
 <?php
 if($_SESSION['statut'] == "gerant")
 { ?>
+    <h3>Vous êtes sur la page : <strong>Gérant</strong></h3>
     <a href ="index.php?page=formulaire"><button >Créer un Hôtel</button></a>
     <a href ="index.php?page=select"><button >Modifier un hôtel</button></a>
 <?php
 }
 else // staff
 { ?>
+    <h3>Vous êtes sur la page : <strong>Staff</strong></h3>
     <a href ="index.php?page=formulaire"><button >Faire une réservation</button></a>
     <a href ="index.php?page=formulaire"><button >Modifier une réservation</button></a>
 <?php
