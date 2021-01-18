@@ -3,7 +3,7 @@
      * Page qui crée Les Hotels / reservation dans la BD
      */
     include_once 'sql.php';
-    
+
     //Récupérons les caractéristiques choisi
     if(isset($_SESSION['donneeFormulaire']['caracteristique']))
         $caracteristiques = implode(' ',$_SESSION['donneeFormulaire']['caracteristique']);
@@ -36,7 +36,7 @@
         }
     }
     //RESERVATION
-    if($_SESSION['statut']=='vip')
+    else
     {
         $requete = "INSERT INTO reservation (idStaff, idHotel, nbChambre, date_debut, date_fin) 
             VALUES ('".$_SESSION['idPersonne']."',
