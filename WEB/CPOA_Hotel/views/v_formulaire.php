@@ -8,10 +8,25 @@ require_once(PATH_VIEWS.'header.php');
 switch($_SESSION['statut'])
 {
   case 'gerant':
-    ?> <h2>Creer un hotel </h2> <?php
+    if(isset($_GET['hotel']))
+    {
+      ?> <h2>Modifier un hotel </h2> <?php
+    }
+    else
+    {
+      ?> <h2>Creer un hotel </h2> <?php
+    }
+      
     break;
-    case 'vip':
-      ?> <h2>Faire une reservation </h2> <?php
+    case 'staff':
+      if(isset($_GET['reservation']))
+    {
+      ?> <h2>Modifier une réservation </h2> <?php
+    }
+    else
+    {
+      ?> <h2>Faire une réservation </h2> <?php
+    }
       break;
 }
 require_once('libs/v_forms.php');

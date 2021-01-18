@@ -8,6 +8,7 @@ const BD_DBNAME = 'p1911441';
 const BD_USER = 'p1911441';
 const BD_PWD = '456133';
 
+
 // Langue du site
 const LANG ='FR-fr';
 

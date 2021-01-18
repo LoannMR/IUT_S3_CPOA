@@ -44,12 +44,14 @@
     font-weight: bold;
  }
 
- div.listes
+ div.objet
  {
     text-align: left;
     background-color: gray;
     border: medium solid gray;
     margin-top: 1em;
+    text-decoration: none;
+    color: black;
  }
 
 
