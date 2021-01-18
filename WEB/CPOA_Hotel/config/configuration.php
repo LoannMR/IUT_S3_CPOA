@@ -8,12 +8,11 @@ const BD_DBNAME = 'p1911441';
 const BD_USER = 'p1911441';
 const BD_PWD = '456133';
 
-
 // Langue du site
 const LANG ='FR-fr';
 
 // Paramètres du site : nom de l'auteur ou des auteurs
-const AUTEUR = 'AYMERIC'; 
+const AUTEUR = 'TANLET Quentin'; 
 
 //dossiers racines du site
 define('PATH_CONTROLLERS','./controllers/c_');

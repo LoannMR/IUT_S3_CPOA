@@ -8,7 +8,23 @@
         //Appel du model
         require_once(PATH_MODELS.$page.'.php');
 
-        
+        //Affichage de la bonne page
+        if(count($ligne) == 0)
+        {
+            echo "Erreur, veuillez contactez l'administrateur";
+            exit();
+        }
+        if($ligne[0]['statut'] == 'Gerant')
+        {
+            $_SESSION['statut'] = 'gerant';
+            
+        }
+        else if ($ligne[0]['statut'] == 'Staff')
+        {
+            $_SESSION['statut'] = 'staff';
+        }
+        header('Location: index.php?page=choix');
+        exit();
     }
     
     

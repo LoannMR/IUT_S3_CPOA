@@ -71,8 +71,6 @@ else
       <input type="text" name="nom" placeholder="Nom" value=<?=isset($_SESSION['donneeFormulaire']['nom'])? $_SESSION['donneeFormulaire']['nom'] : ''?>> </label> </br>
       <label> Prenom :
       <input type="text" name="prenom" placeholder="Prénom" value=<?=isset($_SESSION['donneeFormulaire']['prenom'])? $_SESSION['donneeFormulaire']['prenom'] : ''?>> </label> </br>
-      <label> Nombre de personne :
-      <input type="number" min="1" name="nb_personne" value=<?=isset($_SESSION['donneeFormulaire']['nb_personne'])? $_SESSION['donneeFormulaire']['nb_personne'] : 1?>> </label> </br>
       <label> Nombre de chambres :
       <input type="number" min="1" name="nb_chambre" value=<?=isset($_SESSION['donneeFormulaire']['nb_chambre'])? $_SESSION['donneeFormulaire']['nb_chambre'] : 0?>> </label> </br>
 
