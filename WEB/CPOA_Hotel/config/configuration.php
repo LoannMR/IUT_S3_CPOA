@@ -27,8 +27,6 @@ define('PATH_TEXTES','./languages/');
 define('PATH_CSS', PATH_ASSETS.'css/');
 define('PATH_IMAGES', PATH_ASSETS.'images/');
 define('PATH_SCRIPTS', PATH_ASSETS.'scripts/');
-//Sous dossiers vue & controller
-define('PATH_VIEWS_VIP',PATH_VIEWS.'vip/');
 
 //fichiers
 define('PATH_LOGO', PATH_IMAGES.'logo.png');

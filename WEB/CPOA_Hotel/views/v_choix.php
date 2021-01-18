@@ -7,14 +7,14 @@
 <?php
 if($_SESSION['statut'] == "gerant")
 { ?>
-    <a href ="index.php?page=formulaire&statut=gerant"><button >Créer un Hôtel</button></a>
-    <a href ="index.php?page=select&statut=gerant"><button >Modifier un hôtel</button></a>
+    <a href ="index.php?page=formulaire"><button >Créer un Hôtel</button></a>
+    <a href ="index.php?page=select"><button >Modifier un hôtel</button></a>
 <?php
 }
-else // Vip
+else // staff
 { ?>
-    <a href ="index.php?page=formulaire&statut=vip"><button >Faire une réservation</button></a>
-    <a href ="index.php?page=formulaire&statut=vip"><button >Modifier une réservation</button></a>
+    <a href ="index.php?page=formulaire"><button >Faire une réservation</button></a>
+    <a href ="index.php?page=formulaire"><button >Modifier une réservation</button></a>
 <?php
 }
 ?>

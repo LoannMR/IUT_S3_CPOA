@@ -20,7 +20,7 @@
     </div>
 
 
-<a href ="index.php?page=choix&statut=vip"><button >VIP</button></a>
+<a href ="index.php?page=choix&statut=staff"><button >Staff Reservateur</button></a>
 <a href ="index.php?page=choix&statut=gerant"><button >Gérant</button></a>
 
 <!--  Pied de page -->
