@@ -45,7 +45,7 @@
     		}
     	}
 
-        if(isset($_SESSION['donneeFormulaire']['id'])){
+        if(!isset($_SESSION['donneeFormulaire']['id'])){
             $requete = "UPDATE reservation set idhotel = '".$_POST['idHotel']."',
                         nbChambre = '".$_SESSION['donneeFormulaire']['nb_chambre']."',
                         date_debut = '".$_SESSION['donneeFormulaire']['d_arr']."' ,

@@ -16,7 +16,7 @@ else // staff
 { ?>
     <h3>Vous êtes sur la page : <strong>Staff</strong></h3>
     <a href ="index.php?page=formulaire"><button >Faire une réservation</button></a>
-    <a href ="index.php?page=formulaire"><button >Modifier une réservation</button></a>
+    <a href ="index.php?page=select"><button >Modifier une réservation</button></a>
 <?php
 }
 ?>
