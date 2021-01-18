@@ -11,7 +11,7 @@
     <div id="container">    
             <!-- zone de connexion -->
             
-            <form action="index.php?page=verification.php" method="POST">
+            <form action="index.php?page=accueil.php" method="POST">
                 <h3>Veuillez vous identifier</h3>
                 <input type="text" placeholder="Nom d'utilisateur" name="username" required>
                 <input type="password" placeholder="Mot de passe" name="password" required>

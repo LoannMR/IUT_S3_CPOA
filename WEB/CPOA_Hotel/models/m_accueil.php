@@ -3,8 +3,6 @@
 	
 ?>
 
-
-
 <?php
 session_start();
 if(isset($_POST['username']) && isset($_POST['password']))
@@ -18,7 +16,7 @@ if(isset($_POST['username']) && isset($_POST['password']))
     {
         
         $requete = "SELECT count(*) FROM utilisateur where 
-              nom_utilisateur = 'PAUL".$username."' and mot_de_passe = '1234".$password."' ";
+              nom_utilisateur = '$username."' and mot_de_passe = '1234".$password."' ";
         $exec_requete = mysqli_query($db,$requete);
         $reponse      = mysqli_fetch_array($exec_requete);
         $count = $reponse['count(*)'];
@@ -33,7 +31,7 @@ if(isset($_POST['username']) && isset($_POST['password']))
     {
         
         $requete = "SELECT count(*) FROM utilisateur where 
-              nom_utilisateur = 'Jean".$username."' and mot_de_passe = '5678".$password."' ";
+              nom_utilisateur = '".$username."' and mot_de_passe = '5678".$password."' ";
         $exec_requete = mysqli_query($db,$requete);
         $reponse      = mysqli_fetch_array($exec_requete);
         $count = $reponse['count(*)'];
