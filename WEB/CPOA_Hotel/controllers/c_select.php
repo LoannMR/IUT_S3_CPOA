@@ -5,7 +5,8 @@
         case "gerant":
             $want = 'mesHotels';
             break;
-        case "jury":
+        case "staff":
+            $want = 'mesReservations';
             break;
     }
 

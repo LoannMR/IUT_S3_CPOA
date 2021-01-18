@@ -8,6 +8,7 @@
     }
     
     $_SESSION['idPersonne'] = 1;
+    unset($_SESSION['donneeFormulaire']);
 
 
 

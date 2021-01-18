@@ -15,6 +15,10 @@
             $hotels = execRequete($bdd,$requete,true);
             break;
         case "mesReservations":
+            $requete = "select * from reservation";
+            $reservations = execRequete($bdd,$requete,true);
+            $requete = "select * from hotel";
+            $hotels = execRequete($bdd,$requete,true);
             break;
         
         case "hotelDisponible":
